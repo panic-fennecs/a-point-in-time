@@ -5,7 +5,7 @@ var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
 
 func is_solid_tile(x, y):
-	var map = $"/root/Node2D/GameMap";
+	var map = $"/root/Node2D/Map";
 	return map.has_collider_at(x, y);
 
 func is_solid_tile_v(v):
