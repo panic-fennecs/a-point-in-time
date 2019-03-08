@@ -118,7 +118,7 @@ func _process(delta):
 #	# Update game logic here.
 	check_trigger();
 	update_transform();
-
+	
 	if movestate == null:
 		var dir = get_move_dir()
 		if dir != null:

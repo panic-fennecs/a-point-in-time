@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BulbManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/PlantManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/TriggerController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/PlayerCamera.gd" type="Script" id=6]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -17,5 +18,34 @@
 [node name="Map" parent="." index="3" instance=ExtResource( 4 )]
 
 [node name="TriggerController" parent="." index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 104, 73.0001 )
+
+[node name="PlayerCamera" type="Camera2D" parent="." index="5"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = ExtResource( 6 )
+_sections_unfolded = [ "Smoothing", "Transform" ]
 
 
