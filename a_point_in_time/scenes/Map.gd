@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	var map = $"/root/Node2D/Map/GroundMap"
-	# print(map.get_cell(0, 0))
+	print(map.get_cell(16, -2))
 
 func has_collider_by_id(id):
 	var ret = false
