@@ -7,8 +7,11 @@
 
 z_index = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="AnimatedSprite" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 32, 32 )
+_sections_unfolded = [ "Transform" ]
 
 
