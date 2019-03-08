@@ -21,7 +21,6 @@ class Vector2i:
 	
 func vi_plus(a, b):
 	return Vector2i.new(a.x + b.x, a.y + b.y)
-	
 
 enum Direction { LEFT, BOT, RIGHT, TOP }
 
@@ -122,9 +121,12 @@ func _process(delta):
 
 	if movestate == null:
 		var dir = get_move_dir()
-		if dir != null and !is_solid_tile_v(vi_plus(pos, to_vec(dir))):
-			movestate = MoveState.new(dir)
-			$AnimatedSprite.play(dir_to_string(dir) + "_move");
+		if dir != null:
+			if is_solid_tile_v(vi_plus(pos, to_vec(dir))):
+				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
+			else:
+				movestate = MoveState.new(dir)
+				$AnimatedSprite.play(dir_to_string(dir) + "_move");
 	else:
 		movestate.level += delta
 		if movestate.level >= 1:
