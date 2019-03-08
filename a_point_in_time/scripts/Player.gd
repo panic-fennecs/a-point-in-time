@@ -1,15 +1,11 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 # TODO correct start pos
 var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
 
 func is_solid_tile(x, y):
-	var map = $"/root/Node2D/GameMap";
+	var map = $"/root/Node2D/Map";
 	return map.has_collider_at(x, y);
 
 func is_solid_tile_v(v):
@@ -25,7 +21,6 @@ class Vector2i:
 	
 func vi_plus(a, b):
 	return Vector2i.new(a.x + b.x, a.y + b.y)
-	
 
 enum Direction { LEFT, BOT, RIGHT, TOP }
 
@@ -79,16 +74,64 @@ func get_move_dir():
 		else:
 			return null
 
+func dir_to_string(dir):
+	if dir == LEFT:
+		return "left"
+	elif dir == BOT:
+		return "bot"
+	elif dir == RIGHT:
+		return "right"
+	elif dir == TOP:
+		return "top"
+	else:
+		assert(false)
+
+func update_transform():
+	if movestate == null:
+		position.x = pos.x * 64;
+		position.y = pos.y * 64;
+	else:
+		var level = movestate.level;
+		var dirv = to_vec(movestate.dir);
+		position.x = (pos.x + level * dirv.x) * 64;
+		position.y = (pos.y + level * dirv.y) * 64;
+
+func check_trigger():
+	var offset = null
+	if Input.is_action_just_pressed("ui_accept"):
+		var a = $AnimatedSprite.animation;
+		if a.begins_with("left"):
+			offset = Vector2i.new(-1, 0)
+		elif a.begins_with("bot"):
+			offset = Vector2i.new(0, 1)
+		elif a.begins_with("right"):
+			offset = Vector2i.new(1, 0)
+		elif a.begins_with("top"):
+			offset = Vector2i.new(0, -1)
+		else:
+			assert(false)
+		var p = vi_plus(pos, offset)
+		get_node("/root/Node2D/TriggerController").click_position(p)
+
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
+	check_trigger();
+	update_transform();
+
 	if movestate == null:
 		var dir = get_move_dir()
-		if dir != null and !is_solid_tile_v(vi_plus(pos, to_vec(dir))):
-			movestate = MoveState.new(dir)
+		if dir != null:
+			if is_solid_tile_v(vi_plus(pos, to_vec(dir))):
+				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
+			else:
+				movestate = MoveState.new(dir)
+				$AnimatedSprite.play(dir_to_string(dir) + "_move");
 	else:
 		movestate.level += delta
 		if movestate.level >= 1:
 			pos = vi_plus(pos, to_vec(movestate.dir))
-			print(pos.x, " ", pos.y )
+			print(pos.x, " ", pos.y)
+			$AnimatedSprite.play(dir_to_string(movestate.dir) + "_stand");
 			movestate = null
+
