@@ -12,8 +12,8 @@ position = Vector2( 53.4459, 43.4248 )
 
 [node name="TileMap" parent="." index="1" instance=ExtResource( 2 )]
 
-tile_data = PoolIntArray( -1, 1, 0, 0, 1, 0 )
-_sections_unfolded = [ "Cell" ]
+tile_data = PoolIntArray( 0, 1, 0, 1, 4, 0 )
+_sections_unfolded = [ "Cell", "Collision", "Transform" ]
 
 [node name="GameMap" type="Node2D" parent="." index="2"]
 
