@@ -8,9 +8,9 @@ extends Node2D
 var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
 
-# TODO
 func is_solid_tile(x, y):
-	return false
+	var map = $"/root/Node2D/GameMap";
+	return map.has_collider_at(x, y);
 
 func is_solid_tile_v(v):
 	return is_solid_tile(v.x, v.y)
@@ -84,10 +84,11 @@ func _process(delta):
 #	# Update game logic here.
 	if movestate == null:
 		var dir = get_move_dir()
-		if dir != null and !is_solid_tile_v(vi_plus(pos, to_vec(movestate.dir))):
-			movestate = MoveState(dir)
+		if dir != null and !is_solid_tile_v(vi_plus(pos, to_vec(dir))):
+			movestate = MoveState.new(dir)
 	else:
-		movestate.dir += delta
-		if movestate.dir >= 1:
-			movestate = null
+		movestate.level += delta
+		if movestate.level >= 1:
 			pos = vi_plus(pos, to_vec(movestate.dir))
+			print(pos.x, " ", pos.y )
+			movestate = null
