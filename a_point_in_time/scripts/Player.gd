@@ -90,4 +90,5 @@ func _process(delta):
 		movestate.level += delta
 		if movestate.level >= 1:
 			pos = vi_plus(pos, to_vec(movestate.dir))
+			print(pos.x, " ", pos.y )
 			movestate = null
