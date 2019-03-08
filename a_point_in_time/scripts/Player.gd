@@ -21,7 +21,6 @@ class Vector2i:
 	
 func vi_plus(a, b):
 	return Vector2i.new(a.x + b.x, a.y + b.y)
-	
 
 enum Direction { LEFT, BOT, RIGHT, TOP }
 
@@ -97,16 +96,37 @@ func update_transform():
 		position.x = (pos.x + level * dirv.x) * 64;
 		position.y = (pos.y + level * dirv.y) * 64;
 
+func check_trigger():
+	var offset = null
+	if Input.is_action_just_pressed("ui_accept"):
+		var a = $AnimatedSprite.animation;
+		if a.begins_with("left"):
+			offset = Vector2i.new(-1, 0)
+		elif a.begins_with("bot"):
+			offset = Vector2i.new(0, 1)
+		elif a.begins_with("right"):
+			offset = Vector2i.new(1, 0)
+		elif a.begins_with("top"):
+			offset = Vector2i.new(0, -1)
+		else:
+			assert(false)
+		var p = vi_plus(pos, offset)
+		get_node("/root/Node2D/TriggerController").click_position(p)
+
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
+	check_trigger();
 	update_transform();
 
 	if movestate == null:
 		var dir = get_move_dir()
-		if dir != null and !is_solid_tile_v(vi_plus(pos, to_vec(dir))):
-			movestate = MoveState.new(dir)
-			$AnimatedSprite.play(dir_to_string(dir) + "_move");
+		if dir != null:
+			if is_solid_tile_v(vi_plus(pos, to_vec(dir))):
+				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
+			else:
+				movestate = MoveState.new(dir)
+				$AnimatedSprite.play(dir_to_string(dir) + "_move");
 	else:
 		movestate.level += delta
 		if movestate.level >= 1:
