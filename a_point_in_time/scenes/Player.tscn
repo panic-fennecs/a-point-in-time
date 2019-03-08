@@ -5,7 +5,9 @@
 
 [node name="Player" type="Node2D" index="0"]
 
+z_index = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="AnimatedSprite" parent="." index="0" instance=ExtResource( 2 )]
 
