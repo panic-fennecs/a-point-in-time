@@ -8,7 +8,7 @@ func has_collider_by_id(id):
 	var ret = false
 	if id != -1:
 		# TODO extend!
-		ret = id == 1
+		ret = id == 15
 	return ret
 
 func has_collider_at(x, y):
