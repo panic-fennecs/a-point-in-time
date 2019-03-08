@@ -27,15 +27,37 @@ var plant_state = SEED_IN_FUTURE
 var time_state = PRESENT
 
 func goto_future():
-	pass
+	assert time_state == PRESENT
+
+	if plant_state == SEED_IN_FUTURE:
+		_add_seed()
+	elif plant_state == SEED_IN_INVENTORY:
+		# seed stays in inventory, everything is fine :)
+		pass
+	elif plant_state == SEED_IN_PRESENT:
+		_remove_seed()
+		_add_plant()
+	time_state = FUTURE
 
 func goto_present():
-	pass
+	assert time_state == FUTURE
+
+	if plant_state == SEED_IN_FUTURE:
+		_remove_seed()
+	elif plant_state == SEED_IN_INVENTORY:
+		pass
+	elif plant_state == SEED_IN_PRESENT:
+		_remove_plant()
+		_add_seed()
+	time_state = PRESENT
 
 func _remove_item():
 	get_child(0).queue_free()
 
 func _remove_seed():
+	get_child(0).queue_free()
+
+func _remove_plant():
 	get_child(0).queue_free()
 
 func _add_item():
@@ -45,6 +67,10 @@ func _add_item():
 func _add_seed():
 	var seed_obj = seed_scene.instance()
 	add_child(seed_obj)
+
+func _add_plant():
+	var plant_obj = plant_scene.instance()
+	add_child(plant_obj)
 
 func plant_seed_in_present():
 	assert (time_state == PRESENT) and (plant_state == SEED_IN_INVENTORY)
