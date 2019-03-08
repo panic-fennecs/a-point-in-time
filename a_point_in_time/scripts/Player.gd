@@ -4,6 +4,10 @@ extends Node2D
 # var a = 2
 # var b = "textvar"
 
+# TODO correct start pos
+var pos = Vector2i.new(0, 0)
+var movestate = null # null or MoveState
+
 # TODO
 func is_solid_tile(x, y):
 	return false
@@ -45,13 +49,18 @@ class MoveState:
 			self.dir = dir
 			self.level = 0
 
-# TODO
-func is_pressed(Direction): # bool
-	return false
+func is_pressed(dir): # bool
+	if dir == LEFT:
+		return Input.is_action_pressed("ui_left")
+	elif dir == BOT:
+		return Input.is_action_pressed("ui_down")
+	elif dir == RIGHT:
+		return Input.is_action_pressed("ui_right")
+	elif dir == TOP:
+		return Input.is_action_pressed("ui_up")
+	else:
+		assert(false)
 
-# TODO
-var pos = Vector2i.new(0, 0)
-var movestate = null # null or MoveState
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
