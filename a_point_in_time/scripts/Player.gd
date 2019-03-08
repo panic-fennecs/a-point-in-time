@@ -5,7 +5,7 @@ var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
 
 func is_solid_tile(x, y):
-	var map = $"/root/Node2D/GameMap";
+	var map = $"/root/Node2D/Map";
 	return map.has_collider_at(x, y);
 
 func is_solid_tile_v(v):
@@ -97,9 +97,27 @@ func update_transform():
 		position.x = (pos.x + level * dirv.x) * 64;
 		position.y = (pos.y + level * dirv.y) * 64;
 
+func check_trigger():
+	var offset = null
+	if Input.is_action_just_pressed("ui_accept"):
+		var a = $AnimatedSprite.animation;
+		if a.begins_with("left"):
+			offset = Vector2i.new(-1, 0)
+		elif a.begins_with("bot"):
+			offset = Vector2i.new(0, 1)
+		elif a.begins_with("right"):
+			offset = Vector2i.new(1, 0)
+		elif a.begins_with("top"):
+			offset = Vector2i.new(0, -1)
+		else:
+			assert(false)
+		var p = vi_plus(pos, offset)
+		get_node("/root/Node2D/TriggerController").click_position(p)
+
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
+	check_trigger();
 	update_transform();
 
 	if movestate == null:
