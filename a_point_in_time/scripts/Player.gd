@@ -1,15 +1,11 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 # TODO correct start pos
 var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
 
 func is_solid_tile(x, y):
-	var map = $"/root/Node2D/GameMap";
+	var map = $"/root/Node2D/Map";
 	return map.has_collider_at(x, y);
 
 func is_solid_tile_v(v):
@@ -79,16 +75,43 @@ func get_move_dir():
 		else:
 			return null
 
+func dir_to_string(dir):
+	if dir == LEFT:
+		return "left"
+	elif dir == BOT:
+		return "bot"
+	elif dir == RIGHT:
+		return "right"
+	elif dir == TOP:
+		return "top"
+	else:
+		assert(false)
+
+func update_transform():
+	if movestate == null:
+		position.x = pos.x * 64;
+		position.y = pos.y * 64;
+	else:
+		var level = movestate.level;
+		var dirv = to_vec(movestate.dir);
+		position.x = (pos.x + level * dirv.x) * 64;
+		position.y = (pos.y + level * dirv.y) * 64;
+
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
+	update_transform();
+
 	if movestate == null:
 		var dir = get_move_dir()
 		if dir != null and !is_solid_tile_v(vi_plus(pos, to_vec(dir))):
 			movestate = MoveState.new(dir)
+			$AnimatedSprite.play(dir_to_string(dir) + "_move");
 	else:
 		movestate.level += delta
 		if movestate.level >= 1:
 			pos = vi_plus(pos, to_vec(movestate.dir))
-			print(pos.x, " ", pos.y )
+			print(pos.x, " ", pos.y)
+			$AnimatedSprite.play(dir_to_string(movestate.dir) + "_stand");
 			movestate = null
+
