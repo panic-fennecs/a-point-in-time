@@ -7,6 +7,7 @@
 [node name="Map" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+is_future_map = false
 
 [node name="GroundMap" type="TileMap" parent="." index="0"]
 

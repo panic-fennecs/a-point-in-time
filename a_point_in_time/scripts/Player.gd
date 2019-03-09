@@ -9,6 +9,7 @@ func _ready():
 	$AnimatedSprite.play("bot_stand");
 
 func _process(delta):
+	print(get_node("/root/Node2D/"))
 	var speed = 2
 	check_trigger();
 	update_transform();
