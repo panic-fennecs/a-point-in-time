@@ -10,11 +10,11 @@ signal dialog_finished
 
 	
 func _ready():
-	frame_count = $DialogSprite.frames.get_frame_count("default")	
+	#print($DialogSprite)
 	#show_dialog(["Hey", "wie gehts?", "mir gehts gut!"])
+	frame_count = $DialogSprite.frames.get_frame_count("default")
 
 func _input(event):
-	print()
 	if !dialog_visible:
 		return
 	

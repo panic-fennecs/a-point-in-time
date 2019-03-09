@@ -2,6 +2,8 @@ extends Node2D
 
 var bulb_item_scene = preload("res://scenes/BulbItem.tscn")
 var lamp_obj_scene = preload("res://scenes/Lamp.tscn")
+var bulb_state = PRESENT_LAMP
+var dialog_controller
 
 """
 PRESENT_LAMP:
@@ -18,11 +20,11 @@ enum BulbState {
 	FUTURE_LAMP,
 }
 
-var bulb_state = PRESENT_LAMP
 
 func _ready():
 	var lamp_obj = lamp_obj_scene.instance()
 	add_child(lamp_obj)
+	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
 
 func goto_future():
 	if bulb_state == PRESENT_LAMP:
@@ -48,7 +50,8 @@ func _remove_item():
 	$BulbItem.queue_free()
 
 func _take_bulb():
-	print("taking bulb")
+	#print("taking bulb")
+	dialog_controller.show_dialog(["taking bulb"])
 	_add_item()
 	get_node("./Lamp/AnimatedSprite").play("off")
 	bulb_state = INVENTORY
