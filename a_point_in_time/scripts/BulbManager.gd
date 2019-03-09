@@ -1,93 +1,85 @@
 extends Node2D
 
 var bulb_item_scene = preload("res://scenes/BulbItem.tscn")
-var bulb_obj_scene = preload("res://scenes/BulbObj.tscn")
+var lamp_obj_scene = preload("res://scenes/Lamp.tscn")
 
 """
-You can take a functioning bulb from a desk into inventory.
-You can't take a broken bulb from a desk. -> Error: "This bulb is broken"
-
-LAYING:
-	Bulb lays functioning in present and broken in future
+PRESENT_LAMP:
+	Bulb is built into the lamp in the present
 INVENTORY:
-	Bulb is functioning in inventory
-USED:
-	Bulb is placed in future room
+	Bulb is in inventory
+FUTURE_LAMP:
+	Bulb is built into the lamp in the future
 """
 
 enum BulbState {
-	LAYING,
+	PRESENT_LAMP,
 	INVENTORY,
-	USED
+	FUTURE_LAMP,
 }
 
-enum TimeState {
-	PRESENT,
-	FUTURE
-}
-
-var bulb_state = LAYING
-var time_state = PRESENT
+var bulb_state = PRESENT_LAMP
 
 func _ready():
-	var bulb_obj = bulb_obj_scene.instance()
-	add_child(bulb_obj)
+	var lamp_obj = lamp_obj_scene.instance()
+	add_child(lamp_obj)
 
 func goto_future():
-	if bulb_state == LAYING:
-		# Remove functioning bulb in present
-		get_child(0).queue_free()
-		# Add broken bulb into future
-		var bulb_object = bulb_obj_scene.instance()
-		add_child(bulb_object)
+	if bulb_state == PRESENT_LAMP:
+		get_node("./Lamp/AnimatedSprite").play("off")
 	elif bulb_state == INVENTORY:
-		# bulb stays in inventory
-		pass
-	elif bulb_state == USED:
-		# Create working bulb in future
-		var bulb_object = bulb_obj_scene.instance()
-		add_child(bulb_object)
-	time_state = FUTURE
+		pass # lamp still off
+	elif bulb_state == FUTURE_LAMP:
+		get_node("./Lamp/AnimatedSprite").play("on")
 
 func goto_present():
-	if bulb_state == LAYING:
-		# remove broken bulb
-		get_child(0).queue_free()
-		# add functioning bulb
-		var bulb_object = bulb_obj_scene.instance()
-		add_child(bulb_object)
+	if bulb_state == PRESENT_LAMP:
+		get_node("./Lamp/AnimatedSprite").play("on")
 	elif bulb_state == INVENTORY:
-		# bulb stays in inventory
-		pass
-	elif bulb_state == USED:
-		var bulb_object = bulb_obj_scene.instance()
-		add_child(bulb_object)
-	time_state = PRESENT
-
-func _remove_inventar():
-	get_child(0).queue_free()
+		pass # lamp still off
+	elif bulb_state == FUTURE_LAMP:
+		get_node("./Lamp/AnimatedSprite").play("off")
 
 func _add_item():
 	var bulb_item = bulb_item_scene.instance()
 	add_child(bulb_item)
 
-func _remove_bulb():
-	get_child(0).queue_free()
+func _remove_item():
+	$BulbItem.queue_free()
 
-func _add_functional_bulb():
-	var bulb_obj = bulb_obj_scene.instance()
-	add_child(bulb_obj)
-
-func take_bulb_in_present():
-	assert (bulb_state == LAYING) and (time_state == PRESENT)
-	_remove_bulb()
+func _take_bulb():
+	print("taking bulb")
 	_add_item()
+	get_node("./Lamp/AnimatedSprite").play("off")
 	bulb_state = INVENTORY
 
-func touch_broken_bulb_in_future():
-	assert (bulb_state == LAYING) and (time_state == FUTURE)
+func _insert_bulb_in_future():
+	_remove_item()
+	get_node("./Lamp/AnimatedSprite").play("on")
+	bulb_state = FUTURE_LAMP
+
+func _insert_bulb_in_present():
+	_remove_item()
+	get_node("./Lamp/AnimatedSprite").play("on")
+	bulb_state = PRESENT_LAMP
+
+func _touch_missing_bulb_in_future():
+	assert (bulb_state == PRESENT_LAMP)
 	print('This bulb is broken. Don\'t use it. TODO: Move to UI.')
 
-func use_bulb_in_future():
-	_remove_item()
-	bulb_state = USED
+func on_touch_bulb_lamp():
+	var fut = get_node("/root/Node2D/TimeController").is_future()
+	if fut:
+		if bulb_state == PRESENT_LAMP:
+			_touch_missing_bulb_in_future()
+		elif bulb_state == INVENTORY:
+			_insert_bulb_in_future()
+		elif bulb_state == FUTURE_LAMP:
+			_take_bulb()
+	else:
+		if bulb_state == PRESENT_LAMP:
+			_take_bulb()
+		elif bulb_state == INVENTORY:
+			_insert_bulb_in_present()
+		elif bulb_state == FUTURE_LAMP:
+			print("no lamp, sry")
