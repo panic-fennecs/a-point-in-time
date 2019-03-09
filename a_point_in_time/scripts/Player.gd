@@ -121,7 +121,9 @@ func update_walk(delta):
 				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
 			else:
 				movestate = MoveState.new(dir, delta)
-				$AnimatedSprite.play(dir_to_string(dir) + "_move");
+				var v = dir_to_string(dir) + "_move";
+				if $AnimatedSprite.animation != v:
+					$AnimatedSprite.play(v);
 	else:
 		movestate.level += delta
 		if movestate.level >= 1:
