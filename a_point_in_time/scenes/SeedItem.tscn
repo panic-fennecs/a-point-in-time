@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/wall0.png" type="Texture" id=1]
 [ext_resource path="res://resources/seed.png" type="Texture" id=2]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
@@ -12,7 +12,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -21,7 +21,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="SeedItem" type="Node2D" index="0"]
+[node name="SeedItem" type="Node2D"]
 
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
@@ -36,15 +36,16 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer" index="0"]
 
-position = Vector2( 312.178, 686.173 )
-frames = SubResource( 2 )
+position = Vector2( 312, 686 )
+frames = SubResource( 1 )
 animation = "default"
+_sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer" index="1"]
 
 position = Vector2( 312.614, 686.989 )
 scale = Vector2( 1.51311, 1.54616 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "default"
 
 
