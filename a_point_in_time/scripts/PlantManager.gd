@@ -78,13 +78,11 @@ func on_touch_pot():
 	update()
 
 func reset():
-	var seed_node = get_node("./Seed")
-	if seed_node:
-		seed_node.queue_free()
+	if has_node("./Seed"):
+		get_node("./Seed").queue_free()
 
-	var item_node = get_node("./SeedItem")
-	if item_node:
-		item_node.queue_free()
+	if has_node("./SeedItem"):
+		get_node("./SeedItem").queue_free()
 
 func update():
 	reset()
