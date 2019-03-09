@@ -7,18 +7,14 @@ var is_dialog_open = false
 
 func _ready():
 	$AnimatedSprite.play("bot_stand");
-	var dialog_canvas = $"/root/Node2D/PlayerCamera/DialogCanvas"
-	dialog_canvas.connect("dialog_started", self, "on_dialog_started")
-	dialog_canvas.connect("dialog_finished", self, "on_dialog_finished")
 
 func _process(delta):
-	if is_dialog_open:
-		return
-		
 	var speed = 2
 	check_trigger();
 	update_transform();
 	update_walk(speed * delta);
+	
+	is_dialog_open = get_node("/root/Node2D/PlayerCamera/DialogCanvas").dialog_visible
 
 func is_solid_tile(x, y):
 	var map = $"/root/Node2D/Map";
@@ -108,7 +104,7 @@ func update_transform():
 
 func check_trigger():
 	var offset = null
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and !is_dialog_open:
 		var a = $AnimatedSprite.animation;
 		if a.begins_with("left"):
 			offset = Vector2i.new(-1, 0)
@@ -144,9 +140,3 @@ func update_walk(delta):
 			update_walk(extra_delta);
 			if movestate == null and $AnimatedSprite.animation.ends_with("move"):
 				$AnimatedSprite.play(dir_to_string(old_dir) + "_stand");
-				
-func on_dialog_started():
-	is_dialog_open = true
-	
-func on_dialog_finished():
-	is_dialog_open = false
