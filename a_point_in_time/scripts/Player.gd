@@ -57,6 +57,9 @@ class MoveState:
 			self.level = level
 
 func is_pressed(dir): # bool
+	if is_dialog_open:
+		return false
+	
 	if dir == LEFT:
 		return Input.is_action_pressed("ui_left")
 	elif dir == BOT:
