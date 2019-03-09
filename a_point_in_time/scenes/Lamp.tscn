@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/lamp_on.png" type="Texture" id=1]
+[ext_resource path="res://resources/lamp_off.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+} ]
+
+[node name="Lamp" type="Node2D"]
+
+position = Vector2( 403, 81 )
+z_index = 1
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "on"
+
+
