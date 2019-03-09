@@ -3,6 +3,22 @@ extends Node2D
 # TODO correct start pos
 var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
+var is_dialog_open = false
+
+func _ready():
+	$AnimatedSprite.play("bot_stand");
+	var dialog_canvas = $"/root/Node2D/PlayerCamera/DialogCanvas"
+	dialog_canvas.connect("dialog_started", self, "on_dialog_started")
+	dialog_canvas.connect("dialog_finished", self, "on_dialog_finished")
+
+func _process(delta):
+	if is_dialog_open:
+		return
+		
+	var speed = 2
+	check_trigger();
+	update_transform();
+	update_walk(speed * delta);
 
 func is_solid_tile(x, y):
 	var map = $"/root/Node2D/Map";
@@ -55,10 +71,6 @@ func is_pressed(dir): # bool
 		return Input.is_action_pressed("ui_up")
 	else:
 		assert(false)
-
-
-func _ready():
-	$AnimatedSprite.play("bot_stand");
 
 func get_move_dir():
 		if is_pressed(LEFT):
@@ -132,10 +144,9 @@ func update_walk(delta):
 			update_walk(extra_delta);
 			if movestate == null and $AnimatedSprite.animation.ends_with("move"):
 				$AnimatedSprite.play(dir_to_string(old_dir) + "_stand");
-func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-	var speed = 2
-	check_trigger();
-	update_transform();
-	update_walk(speed * delta);
+				
+func on_dialog_started():
+	is_dialog_open = true
+	
+func on_dialog_finished():
+	is_dialog_open = false
