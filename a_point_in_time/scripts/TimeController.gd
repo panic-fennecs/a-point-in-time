@@ -27,3 +27,9 @@ func change_time(new_time_state):
 		for x in m: x.goto_future();
 	else:
 		assert(false)
+
+func is_present():
+	return time_state == PRESENT
+
+func is_future():
+	return time_state == FUTURE

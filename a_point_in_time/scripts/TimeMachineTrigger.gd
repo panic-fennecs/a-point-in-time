@@ -15,4 +15,7 @@ func other(t):
 func trigger():
 	var c = get_node("/root/Node2D/TimeController")
 	c.change_time(other(c.time_state))
-	print("wupwup")
+	if c.is_present():
+		print("welcome to present!")
+	else:
+		print("welcome to future!")
