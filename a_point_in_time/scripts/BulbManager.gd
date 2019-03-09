@@ -51,7 +51,7 @@ func _remove_item():
 
 func _take_bulb():
 	#print("taking bulb")
-	dialog_controller.show_dialog(["taking bulb"])
+	dialog_controller.show_dialog("taking-bulb")
 	_add_item()
 	get_node("./Lamp/AnimatedSprite").play("off")
 	bulb_state = INVENTORY
