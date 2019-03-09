@@ -21,13 +21,7 @@ enum BulbState {
 	USED
 }
 
-enum TimeState {
-	PRESENT,
-	FUTURE
-}
-
 var bulb_state = LAYING
-var time_state = PRESENT
 
 func _ready():
 	var bulb_obj = bulb_obj_scene.instance()
@@ -47,7 +41,6 @@ func goto_future():
 		# Create working bulb in future
 		var bulb_object = bulb_obj_scene.instance()
 		add_child(bulb_object)
-	time_state = FUTURE
 
 func goto_present():
 	if bulb_state == LAYING:
@@ -62,7 +55,6 @@ func goto_present():
 	elif bulb_state == USED:
 		var bulb_object = bulb_obj_scene.instance()
 		add_child(bulb_object)
-	time_state = PRESENT
 
 func _remove_inventar():
 	get_child(0).queue_free()
@@ -74,20 +66,59 @@ func _add_item():
 func _remove_bulb():
 	get_child(0).queue_free()
 
+func _remove_item():
+	get_child(0).queue_free()
+
 func _add_functional_bulb():
 	var bulb_obj = bulb_obj_scene.instance()
 	add_child(bulb_obj)
 
 func take_bulb_in_present():
-	assert (bulb_state == LAYING) and (time_state == PRESENT)
+	assert (bulb_state == LAYING)
+	print("taking bulb in present")
 	_remove_bulb()
 	_add_item()
 	bulb_state = INVENTORY
 
 func touch_broken_bulb_in_future():
-	assert (bulb_state == LAYING) and (time_state == FUTURE)
+	assert (bulb_state == LAYING)
 	print('This bulb is broken. Don\'t use it. TODO: Move to UI.')
 
 func use_bulb_in_future():
 	_remove_item()
+	print("using bulb in future")
 	bulb_state = USED
+
+func on_touch_bulb_table():
+	var fut = get_node("/root/Node2D/TimeController").is_future()
+	if fut:
+		if bulb_state == LAYING:
+			touch_broken_bulb_in_future()
+		elif bulb_state == INVENTORY:
+			pass
+		elif bulb_state == USED:
+			pass
+	else:
+		if bulb_state == LAYING:
+			take_bulb_in_present()
+		elif bulb_state == INVENTORY:
+			pass
+		elif bulb_state == USED:
+			pass
+
+func on_touch_bulb_lamp():
+	var fut = get_node("/root/Node2D/TimeController").is_future()
+	if fut:
+		if bulb_state == LAYING:
+			touch_broken_bulb_in_future()
+		elif bulb_state == INVENTORY:
+			use_bulb_in_future()
+		elif bulb_state == USED:
+			pass
+	else:
+		if bulb_state == LAYING:
+			pass
+		elif bulb_state == INVENTORY:
+			pass
+		elif bulb_state == USED:
+			pass
