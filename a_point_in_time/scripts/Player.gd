@@ -40,9 +40,9 @@ class MoveState:
 		var dir # Direction
 		var level # float from 0 to 1
 		
-		func _init(dir):
+		func _init(dir, level):
 			self.dir = dir
-			self.level = 0
+			self.level = level
 
 func is_pressed(dir): # bool
 	if dir == LEFT:
@@ -113,25 +113,29 @@ func check_trigger():
 		var p = vi_plus(pos, offset)
 		get_node("/root/Node2D/TriggerController").click_position(p)
 
-func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-	check_trigger();
-	update_transform();
-	
+func update_walk(delta):
 	if movestate == null:
 		var dir = get_move_dir()
 		if dir != null:
 			if is_solid_tile_v(vi_plus(pos, to_vec(dir))):
 				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
 			else:
-				movestate = MoveState.new(dir)
+				movestate = MoveState.new(dir, delta)
 				$AnimatedSprite.play(dir_to_string(dir) + "_move");
 	else:
 		movestate.level += delta
 		if movestate.level >= 1:
+			var extra_delta = movestate.level - 1
+			var old_dir = movestate.dir
 			pos = vi_plus(pos, to_vec(movestate.dir))
-			print(pos.x, " ", pos.y)
-			$AnimatedSprite.play(dir_to_string(movestate.dir) + "_stand");
 			movestate = null
-
+			update_walk(extra_delta);
+			if movestate == null and $AnimatedSprite.animation.ends_with("move"):
+				$AnimatedSprite.play(dir_to_string(old_dir) + "_stand");
+func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+	var speed = 2
+	check_trigger();
+	update_transform();
+	update_walk(speed * delta);
