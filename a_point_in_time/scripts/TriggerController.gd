@@ -11,7 +11,7 @@ func add_trigger(trigger):
 	triggers.append(trigger);
 
 func add_floor_trigger(trigger):
-	triggers.append(trigger)
+	floor_triggers.append(trigger)
 
 func clear_triggers():
 	triggers.clear();
@@ -24,7 +24,7 @@ func click_position(pos):
 			t.trigger()
 
 func stand_position(pos):
-	for t in triggers:
+	for t in floor_triggers:
 		if int(t.position.x / 64) == pos.x and int(t.position.y / 64) == pos.y:
 			t.floor_trigger()
 
