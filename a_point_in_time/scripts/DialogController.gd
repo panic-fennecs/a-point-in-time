@@ -8,7 +8,10 @@ var frame_count
 signal dialog_started
 signal dialog_finished
 
-	
+const STRING_DICT = {
+	"taking-bulb": ["I'm currently taking the bulb", "... wow"]
+}
+
 func _ready():
 	#print($DialogSprite)
 	#show_dialog(["Hey", "wie gehts?", "mir gehts gut!"])
@@ -22,10 +25,9 @@ func _input(event):
         if event.pressed and Input.is_action_just_pressed("ui_accept"):
             next_phrase()
 
-func show_dialog(phrase_list):
+func show_dialog(key):
 	assert(!dialog_visible)
-	assert(len(phrase_list) > 0)
-	phrases = phrase_list
+	phrases = STRING_DICT[key]
 	dialog_visible = true
 	emit_signal("dialog_started")
 	update_dialog_visibilty()
