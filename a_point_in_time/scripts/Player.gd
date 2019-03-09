@@ -58,9 +58,7 @@ func is_pressed(dir): # bool
 
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
+	$AnimatedSprite.play("bot_stand");
 
 func get_move_dir():
 		if is_pressed(LEFT):
