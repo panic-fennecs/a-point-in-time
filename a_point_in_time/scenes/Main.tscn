@@ -20,8 +20,6 @@
 
 [node name="Map" parent="." index="3" instance=ExtResource( 4 )]
 
-is_future_map = false
-
 [node name="FutureMap" parent="." index="4" instance=ExtResource( 5 )]
 
 visible = false
