@@ -8,7 +8,7 @@ enum TimeState { PRESENT, FUTURE }
 
 export var time_state = PRESENT
 
-const MANAGERS = ["BulbManager", "PlantManager"]
+const MANAGERS = ["BulbManager", "PlantManager", "Map", "FutureMap"]
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
