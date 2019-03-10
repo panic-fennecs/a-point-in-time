@@ -72,7 +72,7 @@ func on_touch_table():
 			print("empty table")
 	else:
 		if key_state == ON_TABLE:
-			print("another empty table")
+			dialog_controller.show_dialog("no-key-in-present")
 		elif key_state == IN_INVENTORY:
 			print("empty table again")
 

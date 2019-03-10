@@ -16,6 +16,7 @@ const STRING_DICT = {
 	"take-seed-future": ["It seems nobody needs this seed anymore", "Maybe I'll find a good place for it"],
 	"take-seed-present": ["Oh, now I've got that thing again."],
 	"take-key": ["The key of awesome!"],
+	"no-key-in-present": ["This is a Test Text, that is quiet longT"],
 	"dark": ["It's too dark!"]
 }
 
