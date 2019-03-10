@@ -37,7 +37,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="BulbLampTrigger" type="Node2D" parent="." index="4"]
 
-position = Vector2( 608, 96 )
+position = Vector2( 544, 864 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
@@ -48,14 +48,14 @@ script = ExtResource( 6 )
 
 [node name="XBackFloorTrigger" type="Node2D" parent="." index="6"]
 
-position = Vector2( 672, 32 )
+position = Vector2( 416, 864 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 is_X = true
 
 [node name="YBackFloorTrigger" type="Node2D" parent="." index="7"]
 
-position = Vector2( 608, -32 )
+position = Vector2( 480, 928 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 is_X = false
