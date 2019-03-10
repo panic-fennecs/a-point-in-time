@@ -186,7 +186,7 @@ func move_top():
 
 func check_clickable(pos):
 	var b = get_node("/root/Node2D/TriggerController").is_clickable(pos.x, pos.y)
-	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = b
+	get_node("/root/Node2D/PlayerCamera/DialogCanvas/ClickableLabel").visible = b
 
 func hide_clickable():
-	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = false
+	get_node("/root/Node2D/PlayerCamera/DialogCanvas/ClickableLabel").visible = false
