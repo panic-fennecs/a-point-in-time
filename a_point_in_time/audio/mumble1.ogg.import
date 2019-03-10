@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mumble1.ogg-56149daf76a8dafe0856f28033792c0c.oggstr"
+
+[deps]
+
+source_file="res://audio/mumble1.ogg"
+dest_files=[ "res://.import/mumble1.ogg-56149daf76a8dafe0856f28033792c0c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
