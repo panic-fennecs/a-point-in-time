@@ -12,3 +12,7 @@ func trigger():
 		pass
 	elif shelf_id == 2:
 		pass
+	elif shelf_id == 3:
+		pass
+	elif shelf_id == 4:
+		pass
