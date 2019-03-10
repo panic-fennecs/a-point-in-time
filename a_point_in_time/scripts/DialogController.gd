@@ -5,16 +5,16 @@ var phrases
 var current_phrase = 0
 var frame_count = null
 var knock_index = 0
-var knock_joke_count = 10
+var knock_joke_count = 6
 
 signal dialog_started
 signal dialog_finished
 
 const STRING_DICT = {
 	# chapter 1
-	"enter-basement": ["The old basement of my grandpa. I remember playing here as a child alot.","I still can't manage the thought of having inherited my grandpa's old mansion.", "I think I'm gonna look around a bit."],
+	"enter-basement": ["The old basement of my grandpa. I remember playing here as a child alot. It's kinda sad that I couldn't spend much time with him.", "(sigh)","I still can't manage the thought of having inherited my grandpa's old mansion.", "I think I'm gonna look around a bit."],
 	"discover-timemachine": ["Hm.. wierd, can't remember this room.", "What kind of machine is this? Sign says 'Time Machine (Dr. E. Brown Enterprises)'.", "Haha my old gramps always loved jokes like that.", "This reminds me of doctor who and the tardis. I wonder how this thing looks from the inside."],
-	"first-future": ["Woa.. what happend?, I feel a bit dizzy.", "(looks around)", "Has the room changed?", "Hm.. the calender on the wall points to a date in the year 2029. That's got to be a trick, right?"],
+	"first-future": ["Woa.. what happend?, I feel a bit dizzy.", "(looks around)", "Has the room changed?", "Hm.. the calender on the wall points to a date in the year 2029. That's got to be a trick, right?", "Grandpa, what were you doing down here?"],
 	# explore
 	"take-seed-future-table": ["This seed's lying around here like it's important.", "Maybe I'll find a good place for it."],
 	"plant-seed-future": ["Okay, this will take ages to grow..", "Hm.. what am I doing here."],
@@ -32,21 +32,17 @@ const STRING_DICT = {
 	"dark-room": ["Crap I can't see anything. I'm gonna stumble and hurt myself.", "Going into a basement without a flashlight isn't the brightest idea.", "Haha 'brightest idea'." ],
 	"still-dark-room": ["Still dark.. lets get back here when I found something useful."],
 	"broken-bulb": ["Hm.. there seems to be a broken bulb in the lamp socket, so I can't turn on the light."],
-	"sheet": ["This sheet wasn't here before!", "'Dear Stuart, thanks for the beautiful flower. One quick question: Why does it only bloom at night though?'", "'I left the key to the safe deposit room at the discussed place.'", "'xoxo Diana'", "My old nan sweet as always. I think this key might be handy."], #todo do I have a key?
+	"sheet": ["This sheet wasn't here before!", "'Dear Stuart, thanks for the beautiful flower. One quick question: Why does it only bloom at night though?'", "'I left the key to the safe deposit room at the discussed place.'", "'xoxo Diana'", "PS: Could you please travel back in time and get us a fine bottle of red wine Riesling?", "My old nan sweet as always. The fact that you can travel to the past is new to me.", "Maybe I'll find some information on it on one of the bookshelves.", "And maybe the mentioned key is stil there."], #todo do I have a key?
 	"empty-pot": ["If grandpa has a time machine, maybe this flower pot is futuristic as well.", "(turns around and reads sticker)", "'Ikea Muskot'.. I guess not."],
-	"door-locked-0": ["Locked..", "Knock knock.", "Who's there?", "Robin.", "Robin who?", "Robin you, now hand over the cash.", "Hihi."],
+	"door-locked-0": ["Locked..", "Knock knock.", "Who's there?", "Robin.", "Robin who?", "Robin you, now hand over the cash.", "Hehe."],
 	"door-locked-1": ["Locked..", "Knock knock.", "Who's there?", "Etch.", "Etch who?", "Bless you, friend.", "Hehe."],
-	"door-locked-2": ["Locked..", "Knock knock.", "Who's there?", "Cash.", "Cash who?", "No thanks, I'll have some peanuts.", "Haha."],
-	"door-locked-3": ["Locked..", "Knock knock.", "Who's there?", "Mustache.", "Mustache who?", "I mustache you a question, but I’ll shave it for later.", "Heu Heu."],
-	"door-locked-4": ["Locked..", "Knock knock.", "Who's there?", "Tank.", "Tank who?", "You’re welcome.", "Huhuhu."],
-	"door-locked-5": ["Locked..", "Knock knock.", "Who's there?", "Ya.", "Ya who?", "Yahoo! I’m just as psyched to see you!", "Hihihi."],
-	"door-locked-6": ["Locked..", "Knock knock.", "Who's there?", "Voodoo.", "Voodoo who?", "Voodoo you think you are, asking me so many questions?", "Ahahah."],
-	"door-locked-7": ["Locked..", "Knock knock.", "Who’s there?", "Spell.", "Spell who?", "Okay, okay: W. H. O.", "Heheh."],
-	"door-locked-8": ["Locked..", "Knock knock.", "Who’s there?", "Tank.", "Tank who?", "You’re welcome.", "Huhuh."],
-	"door-locked-9": ["Locked..", "Knock knock.", "Who’s there?", "Candice.", "Candice who?", "Candice door open, or what?", "Seriously?"],
+	"door-locked-2": ["Locked..", "Knock knock.", "Who's there?", "Cash.", "Cash who?", "No thanks, I'll have some peanuts.", "Hehe."],
+	"door-locked-3": ["Locked..", "Knock knock.", "Who's there?", "Tank.", "Tank who?", "You’re welcome.", "Hehe."],
+	"door-locked-4": ["Locked..", "Knock knock.", "Who’s there?", "Spell.", "Spell who?", "Okay, okay: W. H. O.", "Hehe."],
+	"door-locked-5": ["Locked..", "Knock knock.", "Who’s there?", "Candice.", "Candice who?", "Candice door open, or what?", "Seriously?"],
 	"open-safe": ["There we go, finally!", "I'm curious whats inside!", "This looks like a circuit board for the time machine.", "The attached description says that you can travel back in time with it.", "'install instruction' gosh who needs that.."],
-	"note-in-inventory": ["'old safe password: 1337'", "Excellent!"],
-	"locked-safe": ["I'm not able to open the safe without a pin.", "(tries 0000)", "(nothing happened)"],
+	"note-in-inventory": ["'old safe password: 1337'", "Nice!", "Let's try this one in the past."],
+	"locked-safe": ["I'm not able to open the safe without a pin.", "(tries 0000)", "(nothing happened)", "(sigh)"],
 }
 
 func _input(event):
