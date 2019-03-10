@@ -9,7 +9,7 @@
 [ext_resource path="res://resources/quit_button.png" type="Texture" id=7]
 [ext_resource path="res://resources/quit_hovered_button.png" type="Texture" id=8]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -110,9 +110,9 @@ _sections_unfolded = [ "Margin", "Textures" ]
 
 [connection signal="pressed" from="Sprite/StartScreenButtonContainer/StartButton" to="Sprite/StartScreenButtonContainer" method="_on_StartButton_pressed"]
 
-[connection signal="pressed" from="Sprite/StartScreenButtonContainer/CreditsButton" to="Sprite/StartScreenButtonContainer" method="_on_SplashButton_pressed"]
-
 [connection signal="pressed" from="Sprite/StartScreenButtonContainer/CreditsButton" to="Sprite/StartScreenButtonContainer" method="_on_CreditsButton_pressed"]
+
+[connection signal="pressed" from="Sprite/StartScreenButtonContainer/CreditsButton" to="Sprite/StartScreenButtonContainer" method="_on_SplashButton_pressed"]
 
 [connection signal="pressed" from="Sprite/StartScreenButtonContainer/QuitButton" to="Sprite/StartScreenButtonContainer" method="_on_QuitButton_pressed"]
 
