@@ -42,7 +42,10 @@ func show_dialog(key):
 	if frame_count == null:
 		frame_count = $DialogSprite.frames.get_frame_count("default")
 	assert(!dialog_visible)
-	phrases = STRING_DICT[key]
+	if STRING_DICT.keys().has(key):
+		phrases = STRING_DICT[key]
+	else:
+		phrases = ["I don't even know what to say.."] # fallback
 	dialog_visible = true
 	emit_signal("dialog_started")
 	update_dialog_visibilty()
