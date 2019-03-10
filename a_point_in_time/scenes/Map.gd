@@ -20,7 +20,7 @@ func has_collider_at(x, y):
 	var ret = has_collider_by_id(id)
 	return ret
 
-func goto_preset():
+func goto_present():
 	self.visible = false
 
 func goto_future():
