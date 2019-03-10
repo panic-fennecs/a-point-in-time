@@ -17,7 +17,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Lamp" type="Node2D"]
+[node name="Lamp" type="Node2D" index="0"]
 
 position = Vector2( 403, 81 )
 z_index = 1

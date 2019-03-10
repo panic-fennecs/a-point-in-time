@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/TriggerController.gd" type="Script" id=1]
 [ext_resource path="res://scripts/TimeMachineTrigger.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/PotTrigger.gd" type="Script" id=4]
 [ext_resource path="res://scripts/BulbLampTrigger.gd" type="Script" id=5]
 [ext_resource path="res://scenes/FakeFloorTrigger.gd" type="Script" id=6]
+[ext_resource path="res://scripts/BackFloorTrigger.gd" type="Script" id=7]
 
 [node name="TriggerController" type="Node2D"]
 
@@ -41,5 +42,19 @@ _sections_unfolded = [ "Transform" ]
 
 position = Vector2( 189.687, 175.739 )
 script = ExtResource( 6 )
+
+[node name="XBackFloorTrigger" type="Node2D" parent="." index="6"]
+
+position = Vector2( 640, 0 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+is_X = true
+
+[node name="YBackFloorTrigger" type="Node2D" parent="." index="7"]
+
+position = Vector2( 576, -64 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+is_X = false
 
 

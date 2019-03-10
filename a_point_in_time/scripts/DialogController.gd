@@ -14,7 +14,8 @@ const STRING_DICT = {
 	"plant-future": ["This will take ages to grow..."],
 	"plant-present": ["It's gonna be a pretty flower"],
 	"take-seed-future": ["It seems nobody needs this seed anymore", "Maybe I'll find a good place for it"],
-	"take-seed-present": ["Oh, now I've got that thing again."]
+	"take-seed-present": ["Oh, now I've got that thing again."],
+	"dark": ["It's too dark!"]
 }
 
 func _ready():

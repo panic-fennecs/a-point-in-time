@@ -144,3 +144,20 @@ func update_walk(delta):
 			update_walk(extra_delta);
 			if movestate == null and $AnimatedSprite.animation.ends_with("move"):
 				$AnimatedSprite.play(dir_to_string(old_dir) + "_stand");
+				print(position)
+
+func move_left():
+	movestate = MoveState.new(LEFT, 0)
+	$AnimatedSprite.play("left_move")
+	
+func move_bot():
+	movestate = MoveState.new(BOT, 0)
+	$AnimatedSprite.play("bot_move")
+	
+func move_right():
+	movestate = MoveState.new(RIGHT, 0)
+	$AnimatedSprite.play("right_move")
+	
+func move_top():
+	movestate = MoveState.new(TOP, 0)
+	$AnimatedSprite.play("top_move")

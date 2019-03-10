@@ -11,7 +11,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Seed" type="Node2D" index="0"]
+[node name="Seed" type="Node2D"]
 
 position = Vector2( 32, 32 )
 _sections_unfolded = [ "Transform" ]
