@@ -25,6 +25,9 @@ var plant_state = SEED_ON_TABLE_FUTURE
 var POT_POSITION = null
 var SEED_TABLE_POSITION = null
 
+var seed_node = null
+var seed_item_node = null
+
 func _ready():
 	POT_POSITION = get_node("/root/Node2D/TriggerController/PotTrigger").position
 	SEED_TABLE_POSITION = get_node("/root/Node2D/TriggerController/SeedTableTrigger").position
@@ -37,10 +40,12 @@ func goto_present():
 
 func _add_item():
 	var seed_item = seed_item_scene.instance()
+	seed_item_node = seed_item
 	add_child(seed_item)
 
 func _add_seed(pos):
 	var seed_obj = seed_scene.instance()
+	seed_node = seed_obj
 	seed_obj.position = pos
 	add_child(seed_obj)
 
@@ -78,11 +83,13 @@ func on_touch_pot():
 	update()
 
 func reset():
-	if has_node("./Seed"):
-		get_node("./Seed").queue_free()
+	if seed_node:
+		seed_node.queue_free()
+		seed_node = null
 
-	if has_node("./SeedItem"):
-		get_node("./SeedItem").queue_free()
+	if seed_item_node:
+		seed_item_node.queue_free()
+		seed_item_node = null
 
 func update():
 	reset()
