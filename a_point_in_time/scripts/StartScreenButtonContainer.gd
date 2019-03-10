@@ -6,7 +6,7 @@ func _ready():
 	focused_button_id = $StartButton.get_index()
 	
 func _process(delta):
-	$".".get_child(focused_button_id).grab_focus()
+	self.get_child(focused_button_id).grab_focus()
 
 func _input(event):
 	if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
@@ -20,7 +20,7 @@ func _on_StartButton_pressed():
 	get_tree().change_scene("res://scenes/Main.tscn")
 
 func _on_CreditsButton_pressed():
-	pass # replace with function body
+	get_tree().change_scene("res://scenes/CreditScreen.tscn")
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
