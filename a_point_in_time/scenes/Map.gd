@@ -19,7 +19,7 @@ func has_collider_at(x, y):
 	return ret
 
 func goto_present():
-	self.visible = is_future_map
+	self.visible = !is_future_map
 
 func goto_future():
-	self.visible = !is_future_map
+	self.visible = is_future_map
