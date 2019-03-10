@@ -59,7 +59,7 @@ func on_touch_table():
 		dialog_controller.show_dialog("take-seed-future-table")
 		plant_state = SEED_IN_INVENTORY
 	else:
-		print("wow, an empty table")
+		dialog_controller.show_dialog("empty-table")
 
 	update()
 
@@ -75,10 +75,10 @@ func on_touch_pot():
 		elif plant_state == SEED_IN_POT_PRESENT:
 			dialog_controller.show_dialog("inspect-flower")
 		elif plant_state == SEED_ON_TABLE_FUTURE:
-			print("wow, an empty pot")
+			dialog_controller.show_dialog("empty-pot")
 	else:
 		if plant_state == SEED_IN_POT_FUTURE:
-			print("you can't do nothing, boii")
+			dialog_controller.show_dialog("empty-pot")
 		elif plant_state == SEED_IN_INVENTORY:
 			dialog_controller.show_dialog("plant-seed-present")
 			plant_state = SEED_IN_POT_PRESENT
@@ -86,7 +86,7 @@ func on_touch_pot():
 			dialog_controller.show_dialog("take-seed-present-pot")
 			plant_state = SEED_IN_INVENTORY
 		elif plant_state == SEED_ON_TABLE_FUTURE:
-			print("wow, an empty pot")
+			dialog_controller.show_dialog("empty-pot")
 
 	update()
 
