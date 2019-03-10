@@ -10,7 +10,7 @@ export var time_state = PRESENT
 
 var first_future = true
 
-const MANAGERS = ["BulbManager", "PlantManager", "KeyManager", "Map", "FutureMap", "Tresor"]
+const MANAGERS = ["BulbManager", "PlantManager", "KeyManager", "Map", "FutureMap", "Tresor", "Door"]
 
 func change_time(new_time_state):
 	time_state = new_time_state

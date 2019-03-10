@@ -6,6 +6,7 @@ var movestate = null # null or MoveState
 var is_dialog_open = false
 
 var dialog_controller
+const speed = 5
 
 func _ready():
 	$AnimatedSprite.play("bot_stand");
@@ -13,7 +14,6 @@ func _ready():
 	dialog_controller.show_dialog("enter-basement")
 
 func _process(delta):
-	var speed = 2
 	check_trigger();
 	update_transform();
 	update_walk(speed * delta);
