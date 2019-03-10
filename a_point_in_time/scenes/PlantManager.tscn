@@ -10,6 +10,4 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Plant" parent="." index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 167.231, 547.087 )
-
 

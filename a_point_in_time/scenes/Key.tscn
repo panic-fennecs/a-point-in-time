@@ -13,7 +13,7 @@ animations = [ {
 
 [node name="Key" type="Node2D"]
 
-position = Vector2( 64, 32 )
+position = Vector2( 480, -160 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
