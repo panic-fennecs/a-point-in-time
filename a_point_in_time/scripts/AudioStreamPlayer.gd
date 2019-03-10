@@ -6,6 +6,7 @@ var mumble2 = preload("res://audio/mumble2.ogg")
 var mumble3 = preload("res://audio/mumble3.ogg")
 var mumble4 = preload("res://audio/mumble5.ogg")
 var mumbles = [mumble0, mumble1, mumble2, mumble3, mumble4]
+var click = preload("res://audio/click.ogg")
 var time_machine_warp = preload("res://audio/time_machine_warp.ogg")
 # TODO: var background = preload("res://audio/path_to_background.ogg")
 
@@ -48,3 +49,6 @@ func play_mumble(index):
 
 func play_time_machine_warp():
 	playStream(time_machine_warp)
+
+func play_click():
+	playStream(click)
