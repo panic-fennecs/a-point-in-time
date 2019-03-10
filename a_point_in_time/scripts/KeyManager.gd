@@ -60,6 +60,9 @@ func on_touch_table():
 	if is_key_on_table():
 		key_state = IN_INVENTORY
 		dialog_controller.show_dialog("take-key")
+	else:
+		dialog_controller.show_dialog("empty-table")
+	
 	update()
 
 func player_has_key():
