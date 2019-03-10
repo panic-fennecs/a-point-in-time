@@ -109,9 +109,9 @@ _sections_unfolded = [ "Textures" ]
 
 [connection signal="pressed" from="Sprite/StartScreenButtonContainer/StartButton" to="Sprite/StartScreenButtonContainer" method="_on_StartButton_pressed"]
 
-[connection signal="pressed" from="Sprite/StartScreenButtonContainer/CreditsButton" to="Sprite/StartScreenButtonContainer" method="_on_SplashButton_pressed"]
-
 [connection signal="pressed" from="Sprite/StartScreenButtonContainer/CreditsButton" to="Sprite/StartScreenButtonContainer" method="_on_CreditsButton_pressed"]
+
+[connection signal="pressed" from="Sprite/StartScreenButtonContainer/CreditsButton" to="Sprite/StartScreenButtonContainer" method="_on_SplashButton_pressed"]
 
 [connection signal="pressed" from="Sprite/StartScreenButtonContainer/QuitButton" to="Sprite/StartScreenButtonContainer" method="_on_QuitButton_pressed"]
 
