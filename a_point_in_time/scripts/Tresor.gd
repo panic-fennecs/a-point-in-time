@@ -7,23 +7,26 @@ enum TresorNoteState {
 }
 
 var tresor_note_state = START
-
 var note_item_scene = preload("res://scenes/NoteItem.tscn")
 var note_item = null
+var dialog_controller
 
 func _ready():
 	get_node("/root/Node2D/TriggerController").add_trigger(self);
+	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
 
 func trigger():
 	var fut = get_node("/root/Node2D/TimeController").is_future()
 	if tresor_note_state == START and fut:
-		print("NOTE_IN_INV")
+		dialog_controller.show_dialog("note-in-inventory")
 		tresor_note_state = NOTE_IN_INV
 		_add_note_item()
 	if tresor_note_state == NOTE_IN_INV and !fut:
-		print("OPENED")
+		dialog_controller.show_dialog("open-safe")
 		tresor_note_state = OPENED
 		get_node("/root/Node2D/ModuleManager").take_module()
+	if tresor_note_state == START and !fut:
+		dialog_controller.show_dialog("locked-safe")
 	_update()
 
 func _add_note_item():
