@@ -49,34 +49,24 @@ func add_key_node():
 func update():
 	reset()
 
-	var fut = get_node("/root/Node2D/TimeController").is_future()
-	if fut:
-		if key_state == ON_TABLE:
-			add_key_node()
-		elif key_state == IN_INVENTORY:
-			add_key_item()
-	else: # PRESENT
-		if key_state == ON_TABLE:
-			pass
-		elif key_state == IN_INVENTORY:
-			add_key_item()
+	if is_key_on_table():
+		add_key_node()
+	elif key_state == IN_INVENTORY:
+		add_key_item()
 
 func on_touch_table():
 	var fut = get_node("/root/Node2D/TimeController").is_future()
 	
-	if fut:
-		if key_state == ON_TABLE:
-			key_state = IN_INVENTORY
-			dialog_controller.show_dialog("take-key")
-		elif key_state == IN_INVENTORY:
-			print("empty table")
-	else:
-		if key_state == ON_TABLE:
-			dialog_controller.show_dialog("no-key-in-present")
-		elif key_state == IN_INVENTORY:
-			print("empty table again")
-
+	if is_key_on_table():
+		key_state = IN_INVENTORY
+		dialog_controller.show_dialog("take-key")
 	update()
 
 func player_has_key():
 	return key_state == IN_INVENTORY
+
+func is_plant_grown():
+	return get_node("/root/Node2D/PlantManager").is_grown()
+
+func is_key_on_table():
+	return key_state == ON_TABLE and is_plant_grown()
