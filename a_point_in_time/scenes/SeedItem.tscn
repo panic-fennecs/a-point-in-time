@@ -36,16 +36,17 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer" index="0"]
 
-position = Vector2( 312, 686 )
+position = Vector2( 46, 170 )
 frames = SubResource( 1 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer" index="1"]
 
-position = Vector2( 312.614, 686.989 )
+position = Vector2( 46.614, 171.989 )
 scale = Vector2( 1.51311, 1.54616 )
 frames = SubResource( 2 )
 animation = "default"
+_sections_unfolded = [ "Transform" ]
 
 
