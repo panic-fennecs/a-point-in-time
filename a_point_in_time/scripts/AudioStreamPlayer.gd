@@ -41,7 +41,9 @@ func playStream(pathToFile):
 
 func play_mumble(index):
 	if index == -1:
-		index = randi() % 4
+		index = randi() % mumbles.size()
+	else:
+		index = index % mumbes.size()
 	playStream(mumbles[index])
 
 func play_time_machine_warp():
