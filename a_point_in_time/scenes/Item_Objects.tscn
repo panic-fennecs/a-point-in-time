@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/item_sprites/table.png" type="Texture" id=1]
 [ext_resource path="res://resources/item_sprites/desk.png" type="Texture" id=2]
@@ -8,10 +8,6 @@
 [ext_resource path="res://resources/item_sprites/time_machine2.png" type="Texture" id=6]
 [ext_resource path="res://resources/item_sprites/time_machine3.png" type="Texture" id=7]
 [ext_resource path="res://resources/item_sprites/time_machine4.png" type="Texture" id=8]
-[ext_resource path="res://resources/item_sprites/time_machine_teleport1.png" type="Texture" id=9]
-[ext_resource path="res://resources/item_sprites/time_machine_teleport2.png" type="Texture" id=10]
-[ext_resource path="res://resources/item_sprites/time_machine_teleport3.png" type="Texture" id=11]
-[ext_resource path="res://resources/item_sprites/time_machine_teleport4.png" type="Texture" id=12]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -55,23 +51,7 @@ texture = ExtResource( 7 )
 
 texture = ExtResource( 8 )
 
-[node name="TimeMachineTeleport0" type="Sprite" parent="." index="8"]
-
-texture = ExtResource( 9 )
-
-[node name="TimeMachineTeleport1" type="Sprite" parent="." index="9"]
-
-texture = ExtResource( 10 )
-
-[node name="TimeMachineTeleport2" type="Sprite" parent="." index="10"]
-
-texture = ExtResource( 11 )
-
-[node name="TimeMachineTeleport3" type="Sprite" parent="." index="11"]
-
-texture = ExtResource( 12 )
-
-[node name="Collider" type="Sprite" parent="." index="12"]
+[node name="Collider" type="Sprite" parent="." index="8"]
 
 position = Vector2( 0, 67.4849 )
 scale = Vector2( 74.1234, -66.4849 )
