@@ -32,7 +32,14 @@ const STRING_DICT = {
 	"dark-room": ["Crap I can't see anything. I'm gonna stumble and hurt myself.", "Going into a basement without a flashlight isn't the brightest idea.", "Haha 'brightest idea'." ],
 	"still-dark-room": ["Still dark.. lets get back here when I found something useful."],
 	"broken-bulb": ["Hm.. there seems to be a broken bulb in the lamp socket, so I can't turn on the light."],
-	"sheet": ["This sheet wasn't here before!", "'Dear Stuart, thanks for the beautiful flower. One quick question: Why does it only bloom at night though?'", "'I left the key to the safe deposit room at the discussed place.'", "'xoxo Diana'", "PS: Could you please travel back in time and get us a fine bottle of red wine Riesling?", "My old nan sweet as always. The fact that you can travel to the past is new to me.", "Maybe I'll find some information on it on one of the bookshelves.", "And maybe the mentioned key is stil there."], #todo do I have a key?
+	"sheet": [
+		"This sheet wasn't here before!",
+		"'Dear Stuart, thanks for the beautiful flower. One quick question: Why does it only bloom at night though?'",
+		"'I left the key to the safe deposit room at the discussed place.'",
+		"'xoxo Diana'", "'PS: Could you please travel back in time and get us a fine old bottle of red wine?'",
+		"I'm sorry nan, but grandpa won't be able to read this. But thank you very much for all the information.",
+		"Oh.. I didn't know that you can travel to the past. Maybe I'll find some information on it on one of the bookshelves.",
+		"And maybe the mentioned key is stil there."],
 	"empty-pot": ["If grandpa has a time machine, maybe this flower pot is futuristic as well.", "(turns around and reads sticker)", "'Ikea Muskot'.. I guess not."],
 	"door-locked-0": ["Locked..", "Knock knock.", "Who's there?", "Robin.", "Robin who?", "Robin you, now hand over the cash.", "Hehe."],
 	"door-locked-1": ["Locked..", "Knock knock.", "Who's there?", "Etch.", "Etch who?", "Bless you, friend.", "Hehe."],
@@ -43,6 +50,10 @@ const STRING_DICT = {
 	"open-safe": ["There we go, finally!", "I'm curious whats inside!", "This looks like a circuit board for the time machine.", "The attached description says that you can travel back in time with it.", "'install instruction' gosh who needs that.."],
 	"note-in-inventory": ["'old safe password: 1337'", "Nice!", "Let's try this one in the past."],
 	"locked-safe": ["I'm not able to open the safe without a pin.", "(tries 0000)", "(nothing happened)", "(sigh)"],
+	"shelf-scroll": ["Hm.. in this shelf are just some scrolls. Perhaps there is more information in one of the other once."],
+	"shelf-empty": ["Nah.. there are no fancy books in here."],
+	"shelf-found-secret": ["Uh one of the books looks old and selfmade.", "'To travel back in time you need an 'XS-Exchange module'. The module is stored in a safe place.'", "'Chapter 2: How to create a portal.", "I think this is not relevant."],
+	
 }
 
 func _input(event):
