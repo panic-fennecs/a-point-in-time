@@ -28,6 +28,7 @@ const STRING_DICT = {
 	"no-key-in-present": ["This is a Test Text, that is quiet longT"],
 	"taking-bulb": ["I'm currently taking the bulb", "... wow"],
 	"dark": ["It's too dark!"],
+	"sheet": ["neat sheet tho"]
 }
 
 func _input(event):
