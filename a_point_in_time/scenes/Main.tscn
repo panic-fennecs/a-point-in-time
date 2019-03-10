@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BulbManager.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scenes/ModuleManager.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/SheetManager.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/AnimationController.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/TimeMachine.tscn" type="PackedScene" id=16]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -101,5 +102,10 @@ position = Vector2( 0, 1 )
 [node name="SheetManager" parent="." index="12" instance=ExtResource( 14 )]
 
 [node name="AnimationController" parent="." index="13" instance=ExtResource( 15 )]
+
+[node name="TimeMachine" parent="." index="14" instance=ExtResource( 16 )]
+
+position = Vector2( 352, 533 )
+_sections_unfolded = [ "Transform" ]
 
 
