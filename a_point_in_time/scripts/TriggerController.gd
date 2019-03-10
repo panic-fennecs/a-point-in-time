@@ -20,7 +20,13 @@ func clear_triggers():
 # pos: Vector2i
 func click_position(pos):
 	for t in triggers:
-		if int(t.position.x / 64) == pos.x and int(t.position.y / 64) == pos.y:
+		var int_x = int(t.position.x / 64)
+		var int_y = int(t.position.y / 64)
+		if pos.x < 0:
+			int_x -= 1
+		if pos.y < 0:
+			int_y -= 1
+		if int_x == pos.x and int_y == pos.y:
 			t.trigger()
 
 func stand_position(pos):
