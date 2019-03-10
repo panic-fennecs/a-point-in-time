@@ -10,11 +10,6 @@ export var time_state = PRESENT
 
 const MANAGERS = ["BulbManager", "PlantManager", "Map", "FutureMap"]
 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
 func change_time(new_time_state):
 	time_state = new_time_state
 	
@@ -23,8 +18,10 @@ func change_time(new_time_state):
 	
 	if time_state == PRESENT:
 		for x in m: x.goto_present();
+		get_node("CanvasLayer/Label").text = "2019"
 	elif time_state == FUTURE:
 		for x in m: x.goto_future();
+		get_node("CanvasLayer/Label").text = "2029"
 	else:
 		assert(false)
 
