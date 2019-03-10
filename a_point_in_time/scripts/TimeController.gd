@@ -8,7 +8,7 @@ enum TimeState { PRESENT, FUTURE }
 
 export var time_state = PRESENT
 
-const MANAGERS = ["BulbManager", "PlantManager", "Map", "FutureMap", "Tresor"]
+const MANAGERS = ["BulbManager", "PlantManager", "KeyManager", "Map", "FutureMap", "Tresor"]
 
 func change_time(new_time_state):
 	time_state = new_time_state
