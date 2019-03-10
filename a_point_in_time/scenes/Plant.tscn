@@ -30,9 +30,10 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
+position = Vector2( 186.544, 114.362 )
 z_index = 1
 frames = SubResource( 1 )
 animation = "empty"
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 

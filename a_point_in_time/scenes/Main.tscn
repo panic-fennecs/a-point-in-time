@@ -23,7 +23,6 @@
 [node name="FutureMap" parent="." index="4" instance=ExtResource( 5 )]
 
 visible = false
-is_future_map = true
 
 [node name="TriggerController" parent="." index="5" instance=ExtResource( 6 )]
 
