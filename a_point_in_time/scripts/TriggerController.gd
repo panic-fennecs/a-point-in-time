@@ -17,21 +17,25 @@ func clear_triggers():
 	triggers.clear();
 	floor_triggers.clear();
 
+func _conv(w):
+	var int_ = int(w / 64)
+	if w < 0:
+		int_ -= 1
+	return int_
+
 # pos: Vector2i
 func click_position(pos):
 	for t in triggers:
-		var int_x = int(t.position.x / 64)
-		var int_y = int(t.position.y / 64)
-		if pos.x < 0:
-			int_x -= 1
-		if pos.y < 0:
-			int_y -= 1
+		var int_x = _conv(t.position.x)
+		var int_y = _conv(t.position.y)
 		if int_x == pos.x and int_y == pos.y:
 			t.trigger()
 
 func stand_position(pos):
 	for t in floor_triggers:
-		if int(t.position.x / 64) == pos.x and int(t.position.y / 64) == pos.y:
+		var int_x = _conv(t.position.x)
+		var int_y = _conv(t.position.y)
+		if int_x == pos.x and int_y == pos.y:
 			t.floor_trigger()
 
 

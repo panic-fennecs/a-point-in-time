@@ -19,5 +19,5 @@ func goto_future():
 	$AnimatedSprite.play("open")
 
 func goto_present():
-	if tresor_note_state != OPENEND:
+	if tresor_note_state != OPENED:
 		$AnimatedSprite.play("closed")
