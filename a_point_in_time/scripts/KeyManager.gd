@@ -77,3 +77,6 @@ func on_touch_table():
 			print("empty table again")
 
 	update()
+
+func player_has_key():
+	return key_state == IN_INVENTORY

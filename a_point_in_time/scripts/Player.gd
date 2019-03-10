@@ -16,9 +16,12 @@ func _process(delta):
 	
 	is_dialog_open = get_node("/root/Node2D/PlayerCamera/DialogCanvas").dialog_visible
 
+func is_closed_door(x, y):
+	return x == 7 and y == 12 and get_node("/root/Node2D/Door").is_closed()
+
 func is_solid_tile(x, y):
 	var map = $"/root/Node2D/Map";
-	return map.has_collider_at(x, y);
+	return map.has_collider_at(x, y) or is_closed_door(x, y);
 
 func is_solid_tile_v(v):
 	return is_solid_tile(v.x, v.y)
