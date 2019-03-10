@@ -10,7 +10,7 @@
 [ext_resource path="res://scripts/KeyTrigger.gd" type="Script" id=8]
 [ext_resource path="res://scripts/ShelfTrigger.gd" type="Script" id=9]
 
-[node name="TriggerController" type="Node2D"]
+[node name="TriggerController" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
