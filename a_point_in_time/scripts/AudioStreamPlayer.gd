@@ -43,7 +43,7 @@ func play_mumble(index):
 	if index == -1:
 		index = randi() % mumbles.size()
 	else:
-		index = index % mumbes.size()
+		index = index % mumbles.size()
 	playStream(mumbles[index])
 
 func play_time_machine_warp():
