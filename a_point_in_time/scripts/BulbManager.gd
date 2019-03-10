@@ -76,7 +76,7 @@ func _insert_bulb_in_present():
 
 func _touch_missing_bulb_in_future():
 	assert (bulb_state == PRESENT_LAMP)
-	print('This bulb is broken. Don\'t use it. TODO: Move to UI.')
+	dialog_controller.show_dialog("broken-bulb")
 
 func on_touch_bulb_lamp():
 	var fut = get_node("/root/Node2D/TimeController").is_future()
