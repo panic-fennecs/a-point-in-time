@@ -3,7 +3,6 @@ extends Node2D
 var is_in_animation = false
 var time_passed = 0
 const ANIMATION_TIME = 1.15
-var first_future = true
 
 func _process(delta):
 	if is_in_animation:
@@ -25,7 +24,3 @@ func stop_animation():
 	is_in_animation = false
 	get_node("CanvasLayer/AnimatedSprite").visible = false
 	get_node("/root/Node2D/TimeMachine/AnimatedSprite").play("close")
-	
-	if first_future:
-		first_future = false
-		get_node("/root/Node2D/PlayerCamera/DialogCanvas").show_dialog("first-future")

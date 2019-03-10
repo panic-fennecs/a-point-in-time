@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-var first_future = false
+var first_future = true
 var time_controller = null
 var new_time_state = null
 var is_in_animation = false
@@ -29,3 +29,7 @@ func _on_animation_finished():
 	elif self.animation == "close":
 		self.play("default")
 		is_in_animation = false
+			
+		if first_future:
+			first_future = false
+			get_node("/root/Node2D/PlayerCamera/DialogCanvas").show_dialog("first-future")
