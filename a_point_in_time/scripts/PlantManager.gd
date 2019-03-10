@@ -123,3 +123,7 @@ func update():
 			get_node("./Plant/AnimatedSprite").play("seed")
 		elif plant_state == SEED_ON_TABLE_FUTURE:
 			get_node("./Plant/AnimatedSprite").play("empty")
+
+func is_grown():
+	var fut = get_node("/root/Node2D/TimeController").is_future()
+	return plant_state == SEED_IN_POT_PRESENT and fut
