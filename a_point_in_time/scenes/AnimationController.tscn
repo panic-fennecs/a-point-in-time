@@ -12,9 +12,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="AnimationController" type="Node2D"]
+[node name="AnimationController" type="Node2D" index="0"]
 
+z_index = 2
 script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 
@@ -28,8 +30,9 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 visible = false
 position = Vector2( 400, 360 )
+z_index = 2
 frames = SubResource( 1 )
 animation = "default"
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 
