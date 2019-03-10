@@ -29,7 +29,7 @@ const STRING_DICT = {
 	"taking-bulb": ["This comes handy. ", "... wow"],
 	"dark-room": ["Crap I can't see anything. I'm gonna stumble and hurt myself.", "Going into a basement without a flashlight isn't the brightest idea.", "Haha \"brightest idea\"." ],
 	"still-dark-room": ["Still dark.. lets get back here when I found something useful."],
-	"broken-bulb": ["Hm.. there seems to be a broken bulb in the lamp socket, so I can't turn on the light."]
+	"broken-bulb": ["Hm.. there seems to be a broken bulb in the lamp socket, so I can't turn on the light."],
 	"sheet": ["neat sheet tho"]
 }
 
