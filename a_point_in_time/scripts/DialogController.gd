@@ -11,9 +11,8 @@ signal dialog_finished
 const STRING_DICT = {
 	# chapter 1
 	"enter-basement": ["The old basement of my grandpa. I remember playing here as a child alot.","I still can't manage the thought of having inherited my grandpa's old mansion.", "I think I'm gonna look around a bit."],
-	"discover-tm": ["Hm.. wierd, I can't remember this room."],
-	
-	
+	"discover-tm": ["Hm.. wierd, can't remember this room.", "What kind of machine is this? Sign says \"Time Machine (Dr. E. Brown Enterprises)\".", "Haha my old gramps always loved jokes like that.", "This reminds me of doctor who and the tardis. I wonder how this thing looks from the inside."],
+	"first-future": ["Woa .. what happend?, I feel a bit dizzy.", "*looks around* Has the room changed?", "Hm.. the calender on the wall points to a date in the year 2029. That's got to be a trick, right?"],
 	"flower": ["This is a pretty flower.", "I like it :)"],
 	"plant-future": ["This will take ages to grow..."],
 	"plant-present": ["It's gonna be a pretty flower"],
