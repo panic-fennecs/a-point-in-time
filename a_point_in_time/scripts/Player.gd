@@ -190,4 +190,4 @@ func move_top():
 func update_clickable():
 	var p = target_tile()
 	var b = get_node("/root/Node2D/TriggerController").is_clickable(p.x, p.y)
-	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = b
+	get_node("/root/Node2D/PlayerCamera/DialogCanvas/ClickableLabel").visible = b
