@@ -24,13 +24,13 @@ const STRING_DICT = {
 	"inspect-flower": ["Neat! This is a Ipomoea.", "Grandpa always put this flower next to grandma's bed, so that she had always felt comfortable in her dreams.", "Phew.. okay enough thoughts about the past, back to the time machine topic.", "This tiny seed evolved into this beautiful Ipomoea. And it aged through my time travel.", "That means I can cause things to change by alter the \"Present\". Maybe there is a lot more possible with this machine."],
 
 	# chapter 2
-	"take-key": ["A key.. what a an innovative idea.. (sigh)", "Out of spite I could leave him lying here, but I should probably take him with me."],
+	"take-key": ["Key means opening locked things. Alright let's find some locked things, shall we?"],
 	"empty-table": ["Regular table here.. nothing special i guess.", "C'mon Mabel lets do something productive."],
 	"taking-bulb": ["This comes handy. ", "... wow"],
 	"dark-room": ["Crap I can't see anything. I'm gonna stumble and hurt myself.", "Going into a basement without a flashlight isn't the brightest idea.", "Haha \"brightest idea\"." ],
 	"still-dark-room": ["Still dark.. lets get back here when I found something useful."],
 	"broken-bulb": ["Hm.. there seems to be a broken bulb in the lamp socket, so I can't turn on the light."],
-	"sheet": ["neat sheet tho"]
+	"sheet": ["This sheet wasn't here before!", "\"Dear Stuart, thanks for the beautiful flower. One quick question: Why does it only bloom at night though?\"", "\"I left the key to the safe deposit room at the discussed place.\"", "\"xoxo Diana\"", "My old nan sweet as always. I think this key might be handy."]
 }
 
 func _input(event):
