@@ -11,7 +11,7 @@ func floor_trigger():
 		var player = get_node("/root/Node2D/Player")
 		var dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
 		if is_X:
-			player.move_left()
+			player.move_right()
 		else:
-			player.move_bot()
+			player.move_top()
 		dialog_controller.show_dialog("dark")

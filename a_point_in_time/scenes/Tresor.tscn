@@ -20,7 +20,7 @@ animations = [ {
 
 [node name="Tresor" type="Node2D"]
 
-position = Vector2( 736, -160 )
+position = Vector2( 352, 864 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
