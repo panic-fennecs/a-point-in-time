@@ -66,6 +66,9 @@ class MoveState:
 func is_pressed(dir): # bool
 	if is_dialog_open:
 		return false
+
+	if get_node("/root/Node2D/AnimationController").in_animation():
+		return false
 	
 	if dir == LEFT:
 		return Input.is_action_pressed("ui_left")
