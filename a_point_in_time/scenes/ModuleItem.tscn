@@ -21,7 +21,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="ModuleItem" type="Node2D" index="0"]
+[node name="ModuleItem" type="Node2D"]
 
 _sections_unfolded = [ "Transform" ]
 

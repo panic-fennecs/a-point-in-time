@@ -1,6 +1,7 @@
 extends Node2D
 
 export var is_X = true
+var initial_try = true
 
 func _ready():
 	get_node("/root/Node2D/TriggerController").add_floor_trigger(self);
@@ -14,4 +15,9 @@ func floor_trigger():
 			player.move_right()
 		else:
 			player.move_top()
-		dialog_controller.show_dialog("dark")
+		
+		if initial_try:
+			dialog_controller.show_dialog("dark-room")
+			initial_try = false
+		else:
+			dialog_controller.show_dialog("still-dark-room")
