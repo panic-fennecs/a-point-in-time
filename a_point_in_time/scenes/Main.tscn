@@ -3,16 +3,16 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BulbManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/PlantManager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/FutureMap.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/TriggerController.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/PlayerCamera.gd" type="Script" id=7]
-[ext_resource path="res://scenes/DialogLayer.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/TimeController.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Key.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/KeyManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/FutureMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/TriggerController.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/PlayerCamera.gd" type="Script" id=8]
+[ext_resource path="res://scenes/DialogLayer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/TimeController.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Tresor.tscn" type="PackedScene" id=11]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -20,19 +20,21 @@
 
 [node name="PlantManager" parent="." index="2" instance=ExtResource( 3 )]
 
-[node name="Map" parent="." index="3" instance=ExtResource( 4 )]
+[node name="KeyManager" parent="." index="3" instance=ExtResource( 4 )]
+
+[node name="Map" parent="." index="4" instance=ExtResource( 5 )]
 
 _sections_unfolded = [ "Transform" ]
 
-[node name="FutureMap" parent="." index="4" instance=ExtResource( 5 )]
+[node name="FutureMap" parent="." index="5" instance=ExtResource( 6 )]
 
 visible = false
 
-[node name="TriggerController" parent="." index="5" instance=ExtResource( 6 )]
+[node name="TriggerController" parent="." index="6" instance=ExtResource( 7 )]
 
 position = Vector2( 104, 73.0001 )
 
-[node name="PlayerCamera" type="Camera2D" parent="." index="6"]
+[node name="PlayerCamera" type="Camera2D" parent="." index="7"]
 
 anchor_mode = 1
 rotating = false
@@ -56,16 +58,14 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Smoothing", "Transform" ]
 
-[node name="DialogCanvas" parent="PlayerCamera" index="0" instance=ExtResource( 8 )]
+[node name="DialogCanvas" parent="PlayerCamera" index="0" instance=ExtResource( 9 )]
 
-[node name="TimeController" parent="." index="7" instance=ExtResource( 9 )]
+[node name="TimeController" parent="." index="8" instance=ExtResource( 10 )]
 
 position = Vector2( 0, 1 )
-
-[node name="Key" parent="." index="8" instance=ExtResource( 10 )]
 
 [node name="Tresor" parent="." index="9" instance=ExtResource( 11 )]
 
