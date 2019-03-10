@@ -17,7 +17,8 @@ const STRING_DICT = {
 	"take-seed-present": ["Oh, now I've got that thing again."],
 	"take-key": ["The key of awesome!"],
 	"no-key-in-present": ["This is a Test Text, that is quiet longT"],
-	"dark": ["It's too dark!"]
+	"dark": ["It's too dark!"],
+	"discover-tm": ["uh damn, a time machine! :D"]
 }
 
 func _ready():
