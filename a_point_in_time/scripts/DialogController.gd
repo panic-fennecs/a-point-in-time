@@ -44,6 +44,9 @@ const STRING_DICT = {
 	"door-locked-7": ["Locked..", "Knock knock.", "Who’s there?", "Spell.", "Spell who?", "Okay, okay: W. H. O.", "Heheh."],
 	"door-locked-8": ["Locked..", "Knock knock.", "Who’s there?", "Tank.", "Tank who?", "You’re welcome.", "Huhuh."],
 	"door-locked-9": ["Locked..", "Knock knock.", "Who’s there?", "Candice.", "Candice who?", "Candice door open, or what?", "Seriously?"],
+	"open-safe": ["There we go, finally!", "I'm curious whats inside!", "This looks like a circuit board for the time machine.", "The attached description says that you can travel back in time with it.", "'install instruction' gosh who needs that.."],
+	"note-in-inventory": ["'old safe password: 1337'", "Excellent!"],
+	"locked-safe": ["I'm not able to open the safe without a pin.", "(tries 0000)", "(nothing happened)"],
 }
 
 func _input(event):
