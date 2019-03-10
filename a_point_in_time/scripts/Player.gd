@@ -6,14 +6,14 @@ var movestate = null # null or MoveState
 var is_dialog_open_var = false
 
 var dialog_controller
-var animation_controller
+var animation_sprite
 const speed = 5
 
 func _ready():
 	$AnimatedSprite.play("bot_stand");
 	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
 	dialog_controller.show_dialog("enter-basement")
-	animation_controller = get_node("/root/Node2D/AnimationController")
+	animation_sprite = get_node("/root/Node2D/TimeMachine/AnimatedSprite")
 
 func _process(delta):
 	check_trigger();
@@ -70,7 +70,7 @@ func is_pressed(dir): # bool
 	if is_dialog_open():
 		return false
 
-	if animation_controller.in_animation():
+	if animation_sprite.in_animation():
 		return false
 	
 	if dir == LEFT:
@@ -121,7 +121,7 @@ func update_transform():
 func check_trigger():
 	var offset = null
 	if Input.is_action_just_pressed("ui_accept") and !is_dialog_open():
-		if animation_controller.in_animation():
+		if animation_sprite.in_animation():
 			return
 		var a = $AnimatedSprite.animation;
 		if a.begins_with("left"):
