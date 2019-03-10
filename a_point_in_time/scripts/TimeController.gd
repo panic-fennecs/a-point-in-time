@@ -30,6 +30,8 @@ func change_time(new_time_state):
 	else:
 		assert(false)
 
+	get_node("/root/Node2D/AnimationController").start_animation()
+
 func is_present():
 	return time_state == PRESENT
 
