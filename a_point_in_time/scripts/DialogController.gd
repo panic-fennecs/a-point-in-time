@@ -41,6 +41,7 @@ func show_dialog(key):
 	update_dialog_visibilty()
 	$DialogSprite.frame = randi() % frame_count
 	$DialogLabel.text = phrases[current_phrase]
+	AudioPlayer.play_mumble(-1)
 	
 func update_dialog_visibilty():
 	$DialogLabel.visible = dialog_visible
