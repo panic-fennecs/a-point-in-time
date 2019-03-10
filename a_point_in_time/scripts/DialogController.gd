@@ -15,6 +15,7 @@ const STRING_DICT = {
 	"plant-present": ["It's gonna be a pretty flower"],
 	"take-seed-future": ["It seems nobody needs this seed anymore", "Maybe I'll find a good place for it"],
 	"take-seed-present": ["Oh, now I've got that thing again."],
+	"take-key": ["The key of awesome!"],
 	"dark": ["It's too dark!"]
 }
 

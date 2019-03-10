@@ -13,10 +13,14 @@ var key_state = ON_TABLE
 var key_node = null
 var key_item = null
 
+var dialog_controller
+
 var KEY_POSITION = null
 
 func _ready():
 	KEY_POSITION = get_node("/root/Node2D/TriggerController/KeyTrigger").position
+
+	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
 
 func reset():
 	if key_node:
@@ -63,6 +67,7 @@ func on_touch_table():
 	if fut:
 		if key_state == ON_TABLE:
 			key_state = IN_INVENTORY
+			dialog_controller.show_dialog("take-key")
 		elif key_state == IN_INVENTORY:
 			print("empty table")
 	else:
