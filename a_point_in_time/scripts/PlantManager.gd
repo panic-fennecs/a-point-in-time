@@ -56,7 +56,7 @@ func _add_seed(pos):
 func on_touch_table():
 	var fut = get_node("/root/Node2D/TimeController").is_future()
 	if fut and plant_state == SEED_ON_TABLE_FUTURE:
-		dialog_controller.show_dialog("take-seed-future")
+		dialog_controller.show_dialog("take-seed-future-table")
 		plant_state = SEED_IN_INVENTORY
 	else:
 		print("wow, an empty table")
@@ -68,21 +68,22 @@ func on_touch_pot():
 	if fut:
 		if plant_state == SEED_IN_POT_FUTURE:
 			plant_state = SEED_IN_INVENTORY
+			dialog_controller.show_dialog("take-seed-future-pot")
 		elif plant_state == SEED_IN_INVENTORY:
 			plant_state = SEED_IN_POT_FUTURE
-			dialog_controller.show_dialog("plant-future")
+			dialog_controller.show_dialog("plant-seed-future")
 		elif plant_state == SEED_IN_POT_PRESENT:
-			dialog_controller.show_dialog("flower")
+			dialog_controller.show_dialog("inspect-flower")
 		elif plant_state == SEED_ON_TABLE_FUTURE:
 			print("wow, an empty pot")
 	else:
 		if plant_state == SEED_IN_POT_FUTURE:
 			print("you can't do nothing, boii")
 		elif plant_state == SEED_IN_INVENTORY:
-			dialog_controller.show_dialog("plant-present")
+			dialog_controller.show_dialog("plant-seed-present")
 			plant_state = SEED_IN_POT_PRESENT
 		elif plant_state == SEED_IN_POT_PRESENT:
-			dialog_controller.show_dialog("take-seed-present")
+			dialog_controller.show_dialog("take-seed-present-pot")
 			plant_state = SEED_IN_INVENTORY
 		elif plant_state == SEED_ON_TABLE_FUTURE:
 			print("wow, an empty pot")

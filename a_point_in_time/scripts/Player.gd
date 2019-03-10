@@ -5,8 +5,12 @@ var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
 var is_dialog_open = false
 
+var dialog_controller
+
 func _ready():
 	$AnimatedSprite.play("bot_stand");
+	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
+	dialog_controller.show_dialog("enter-basement")
 
 func _process(delta):
 	var speed = 2

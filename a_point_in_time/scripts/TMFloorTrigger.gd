@@ -7,5 +7,5 @@ func _ready():
 
 func floor_trigger():
 	if !already_seen:
-		get_node("/root/Node2D/PlayerCamera/DialogCanvas").show_dialog("discover-tm")
+		get_node("/root/Node2D/PlayerCamera/DialogCanvas").show_dialog("discover-timemachine")
 		already_seen = true
