@@ -140,10 +140,13 @@ func update_walk(delta):
 	if movestate == null:
 		var dir = get_move_dir()
 		if dir != null:
-			if is_solid_tile_v(vi_plus(pos, to_vec(dir))):
+			var target = vi_plus(pos, to_vec(dir))
+			if is_solid_tile_v(target):
 				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
+				check_clickable(target)
 			else:
 				movestate = MoveState.new(dir, delta)
+				get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = false
 				var v = dir_to_string(dir) + "_move";
 				if $AnimatedSprite.animation != v:
 					$AnimatedSprite.play(v);
@@ -176,3 +179,6 @@ func move_right():
 func move_top():
 	movestate = MoveState.new(TOP, 0)
 	$AnimatedSprite.play("top_move")
+
+func check_clickable(pos):
+	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = get_node("/root/Node2D/TriggerController").is_clickable(pos.x, pos.y)
