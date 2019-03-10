@@ -144,10 +144,11 @@ func update_walk(delta):
 			pos = vi_plus(pos, to_vec(movestate.dir))
 			movestate = null
 			get_node("/root/Node2D/TriggerController").stand_position(pos)
+			if get_node("/root/Node2D/PlayerCamera/DialogCanvas").dialog_visible:
+				return
 			update_walk(extra_delta);
 			if movestate == null and $AnimatedSprite.animation.ends_with("move"):
 				$AnimatedSprite.play(dir_to_string(old_dir) + "_stand");
-				print(position)
 
 func move_left():
 	movestate = MoveState.new(LEFT, 0)
