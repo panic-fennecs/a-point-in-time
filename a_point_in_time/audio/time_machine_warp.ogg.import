@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/time_machine_warp.ogg-d4c48d8b53c3ef9f77a6b2cb6c205430.oggstr"
+
+[deps]
+
+source_file="res://audio/time_machine_warp.ogg"
+dest_files=[ "res://.import/time_machine_warp.ogg-d4c48d8b53c3ef9f77a6b2cb6c205430.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
