@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BulbManager.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/TimeController.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Tresor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/ModuleManager.tscn" type="PackedScene" id=13]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -71,5 +72,7 @@ position = Vector2( 0, 1 )
 [node name="Tresor" parent="." index="9" instance=ExtResource( 11 )]
 
 [node name="Door" parent="." index="10" instance=ExtResource( 12 )]
+
+[node name="ModuleManager" parent="." index="11" instance=ExtResource( 13 )]
 
 

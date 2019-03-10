@@ -5,11 +5,12 @@ var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
 var is_dialog_open = false
 
+const speed = 5
+
 func _ready():
 	$AnimatedSprite.play("bot_stand");
 
 func _process(delta):
-	var speed = 2
 	check_trigger();
 	update_transform();
 	update_walk(speed * delta);
