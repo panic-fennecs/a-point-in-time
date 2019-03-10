@@ -140,8 +140,10 @@ func update_walk(delta):
 	if movestate == null:
 		var dir = get_move_dir()
 		if dir != null:
-			if is_solid_tile_v(vi_plus(pos, to_vec(dir))):
+			var target = vi_plus(pos, to_vec(dir))
+			if is_solid_tile_v(target):
 				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
+				check_clickable(target)
 			else:
 				movestate = MoveState.new(dir, delta)
 				var v = dir_to_string(dir) + "_move";
@@ -176,3 +178,6 @@ func move_right():
 func move_top():
 	movestate = MoveState.new(TOP, 0)
 	$AnimatedSprite.play("top_move")
+
+func check_clickable(pos):
+	print("wupwup")
