@@ -9,16 +9,22 @@ signal dialog_started
 signal dialog_finished
 
 const STRING_DICT = {
-	"taking-bulb": ["I'm currently taking the bulb", "... wow"],
+	# chapter 1
+	"enter-basement": ["The old basement of my grandpa. I remember playing here as a child alot.","I still can't manage the thought of having inherited my grandpa's old mansion.", "I think I'm gonna look around a bit."],
+	"discover-tm": ["Hm.. wierd, I can't remember this room."],
+	
+	
 	"flower": ["This is a pretty flower.", "I like it :)"],
 	"plant-future": ["This will take ages to grow..."],
 	"plant-present": ["It's gonna be a pretty flower"],
 	"take-seed-future": ["It seems nobody needs this seed anymore", "Maybe I'll find a good place for it"],
 	"take-seed-present": ["Oh, now I've got that thing again."],
+
+	# chapter 2
 	"take-key": ["The key of awesome!"],
 	"no-key-in-present": ["This is a Test Text, that is quiet longT"],
+	"taking-bulb": ["I'm currently taking the bulb", "... wow"],
 	"dark": ["It's too dark!"],
-	"discover-tm": ["uh damn, a time machine! :D"]
 }
 
 func _ready():
