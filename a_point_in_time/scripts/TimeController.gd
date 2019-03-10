@@ -18,10 +18,10 @@ func change_time(new_time_state):
 	
 	if time_state == PRESENT:
 		for x in m: x.goto_present();
-		get_node("CanvasLayer/Label").text = "2019"
+		get_node("CanvasLayer/Label").text = "PRESENT"
 	elif time_state == FUTURE:
 		for x in m: x.goto_future();
-		get_node("CanvasLayer/Label").text = "2029"
+		get_node("CanvasLayer/Label").text = "FUTURE"
 	else:
 		assert(false)
 
