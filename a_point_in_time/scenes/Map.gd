@@ -2,6 +2,8 @@ extends Node2D
 
 var collidable_ids = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
+export var is_future_map = false
+
 func _ready():
 	var map = $"/root/Node2D/Map/GroundMap"
 	# print(map.get_cell(16, -2))
@@ -21,7 +23,7 @@ func has_collider_at(x, y):
 	return ret
 
 func goto_present():
-	self.visible = false
+	self.visible = is_future_map
 
 func goto_future():
-	self.visible = true
+	self.visible = !is_future_map
