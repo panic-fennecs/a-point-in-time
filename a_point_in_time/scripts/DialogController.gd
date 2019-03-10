@@ -8,13 +8,25 @@ var frame_count
 signal dialog_started
 signal dialog_finished
 
-	
+const STRING_DICT = {
+	"taking-bulb": ["I'm currently taking the bulb", "... wow"],
+	"flower": ["This is a pretty flower.", "I like it :)"],
+	"plant-future": ["This will take ages to grow..."],
+	"plant-present": ["It's gonna be a pretty flower"],
+	"take-seed-future": ["It seems nobody needs this seed anymore", "Maybe I'll find a good place for it"],
+	"take-seed-present": ["Oh, now I've got that thing again."],
+	"take-key": ["The key of awesome!"],
+	"no-key-in-present": ["This is a Test Text, that is quiet longT"],
+	"dark": ["It's too dark!"],
+	"discover-tm": ["uh damn, a time machine! :D"]
+}
+
 func _ready():
-	frame_count = $DialogSprite.frames.get_frame_count("default")	
+	#print($DialogSprite)
 	#show_dialog(["Hey", "wie gehts?", "mir gehts gut!"])
+	frame_count = $DialogSprite.frames.get_frame_count("default")
 
 func _input(event):
-	print()
 	if !dialog_visible:
 		return
 	
@@ -22,15 +34,15 @@ func _input(event):
         if event.pressed and Input.is_action_just_pressed("ui_accept"):
             next_phrase()
 
-func show_dialog(phrase_list):
+func show_dialog(key):
 	assert(!dialog_visible)
-	assert(len(phrase_list) > 0)
-	phrases = phrase_list
+	phrases = STRING_DICT[key]
 	dialog_visible = true
 	emit_signal("dialog_started")
 	update_dialog_visibilty()
 	$DialogSprite.frame = randi() % frame_count
 	$DialogLabel.text = phrases[current_phrase]
+	AudioPlayer.play_mumble(-1)
 	
 func update_dialog_visibilty():
 	$DialogLabel.visible = dialog_visible

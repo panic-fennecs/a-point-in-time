@@ -7,22 +7,21 @@ var is_dialog_open = false
 
 func _ready():
 	$AnimatedSprite.play("bot_stand");
-	var dialog_canvas = $"/root/Node2D/PlayerCamera/DialogCanvas"
-	dialog_canvas.connect("dialog_started", self, "on_dialog_started")
-	dialog_canvas.connect("dialog_finished", self, "on_dialog_finished")
 
 func _process(delta):
-	if is_dialog_open:
-		return
-		
 	var speed = 2
 	check_trigger();
 	update_transform();
 	update_walk(speed * delta);
+	
+	is_dialog_open = get_node("/root/Node2D/PlayerCamera/DialogCanvas").dialog_visible
+
+func is_closed_door(x, y):
+	return x == 7 and y == 12 and get_node("/root/Node2D/Door").is_closed()
 
 func is_solid_tile(x, y):
 	var map = $"/root/Node2D/Map";
-	return map.has_collider_at(x, y);
+	return map.has_collider_at(x, y) or is_closed_door(x, y);
 
 func is_solid_tile_v(v):
 	return is_solid_tile(v.x, v.y)
@@ -61,6 +60,9 @@ class MoveState:
 			self.level = level
 
 func is_pressed(dir): # bool
+	if is_dialog_open:
+		return false
+	
 	if dir == LEFT:
 		return Input.is_action_pressed("ui_left")
 	elif dir == BOT:
@@ -108,7 +110,7 @@ func update_transform():
 
 func check_trigger():
 	var offset = null
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and !is_dialog_open:
 		var a = $AnimatedSprite.animation;
 		if a.begins_with("left"):
 			offset = Vector2i.new(-1, 0)
@@ -141,12 +143,25 @@ func update_walk(delta):
 			var old_dir = movestate.dir
 			pos = vi_plus(pos, to_vec(movestate.dir))
 			movestate = null
+			get_node("/root/Node2D/TriggerController").stand_position(pos)
+			if get_node("/root/Node2D/PlayerCamera/DialogCanvas").dialog_visible:
+				return
 			update_walk(extra_delta);
 			if movestate == null and $AnimatedSprite.animation.ends_with("move"):
 				$AnimatedSprite.play(dir_to_string(old_dir) + "_stand");
-				
-func on_dialog_started():
-	is_dialog_open = true
+
+func move_left():
+	movestate = MoveState.new(LEFT, 0)
+	$AnimatedSprite.play("left_move")
 	
-func on_dialog_finished():
-	is_dialog_open = false
+func move_bot():
+	movestate = MoveState.new(BOT, 0)
+	$AnimatedSprite.play("bot_move")
+	
+func move_right():
+	movestate = MoveState.new(RIGHT, 0)
+	$AnimatedSprite.play("right_move")
+	
+func move_top():
+	movestate = MoveState.new(TOP, 0)
+	$AnimatedSprite.play("top_move")

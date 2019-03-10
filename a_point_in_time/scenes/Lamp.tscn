@@ -19,7 +19,7 @@ animations = [ {
 
 [node name="Lamp" type="Node2D"]
 
-position = Vector2( 403, 81 )
+position = Vector2( 544, 864 )
 z_index = 1
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -27,5 +27,6 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 frames = SubResource( 1 )
 animation = "on"
+_sections_unfolded = [ "Transform" ]
 
 

@@ -19,3 +19,4 @@ func trigger():
 		print("welcome to present!")
 	else:
 		print("welcome to future!")
+	AudioPlayer.play_time_machine_warp()
