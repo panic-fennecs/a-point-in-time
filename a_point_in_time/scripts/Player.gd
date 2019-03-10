@@ -147,7 +147,7 @@ func update_walk(delta):
 				check_clickable(target)
 			else:
 				movestate = MoveState.new(dir, delta)
-				get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = false
+				hide_clickable()
 				var v = dir_to_string(dir) + "_move";
 				if $AnimatedSprite.animation != v:
 					$AnimatedSprite.play(v);
@@ -185,4 +185,8 @@ func move_top():
 	$AnimatedSprite.play("top_move")
 
 func check_clickable(pos):
-	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = get_node("/root/Node2D/TriggerController").is_clickable(pos.x, pos.y)
+	var b = get_node("/root/Node2D/TriggerController").is_clickable(pos.x, pos.y)
+	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = b
+
+func hide_clickable():
+	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = false
