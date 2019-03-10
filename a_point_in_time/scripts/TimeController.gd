@@ -8,11 +8,12 @@ enum TimeState { PRESENT, FUTURE }
 
 export var time_state = PRESENT
 
-var first_future = true
-
 const MANAGERS = ["BulbManager", "PlantManager", "KeyManager", "Map", "FutureMap", "Tresor", "Door"]
 
 func change_time(new_time_state):
+	get_node("/root/Node2D/TimeMachine/AnimatedSprite").start_travel(self, new_time_state)
+
+func change_time_callback(new_time_state):
 	time_state = new_time_state
 	
 	var m = []
@@ -24,13 +25,8 @@ func change_time(new_time_state):
 	elif time_state == FUTURE:
 		for x in m: x.goto_future();
 		get_node("CanvasLayer/Label").text = "FUTURE"
-		if first_future:
-			first_future = false
-			get_node("/root/Node2D/PlayerCamera/DialogCanvas").show_dialog("first-future")
 	else:
-		assert(false)
-
-	get_node("/root/Node2D/AnimationController").start_animation()
+		assert false
 
 func is_present():
 	return time_state == PRESENT

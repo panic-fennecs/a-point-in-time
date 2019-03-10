@@ -3,13 +3,14 @@ extends Node2D
 enum DoorState { OPEN_FUTURE, OPEN, CLOSED }
 
 var door_state = CLOSED
+var dialog_controller
 
 func _ready():
+	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
 	get_node("/root/Node2D/TriggerController").add_trigger(self)
 	_update()
 
 func trigger():
-	var c = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
 	var fut = get_node("/root/Node2D/TimeController").is_future()
 	if get_node("/root/Node2D/KeyManager").player_has_key():
 		if fut:
@@ -18,6 +19,8 @@ func trigger():
 		else:
 			if door_state != OPEN:
 				door_state = OPEN
+	else:
+		dialog_controller.show_dialog("door-locked")
 	_update()
 
 func _update():
