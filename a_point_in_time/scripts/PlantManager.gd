@@ -3,6 +3,8 @@ extends Node2D
 var seed_scene = preload("res://scenes/Seed.tscn")
 var seed_item_scene = preload("res://scenes/SeedItem.tscn")
 
+var dialog_controller
+
 """
 SEED_ON_TABLE_FUTURE:
 	Seed is on the table in the future.
@@ -31,6 +33,8 @@ var seed_item_node = null
 func _ready():
 	POT_POSITION = get_node("/root/Node2D/TriggerController/PotTrigger").position
 	SEED_TABLE_POSITION = get_node("/root/Node2D/TriggerController/SeedTableTrigger").position
+	
+	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
 
 func goto_future():
 	update()
@@ -52,7 +56,7 @@ func _add_seed(pos):
 func on_touch_table():
 	var fut = get_node("/root/Node2D/TimeController").is_future()
 	if fut and plant_state == SEED_ON_TABLE_FUTURE:
-		print("noice, a seed")
+		dialog_controller.show_dialog("take-seed-future")
 		plant_state = SEED_IN_INVENTORY
 	else:
 		print("wow, an empty table")
@@ -66,16 +70,19 @@ func on_touch_pot():
 			plant_state = SEED_IN_INVENTORY
 		elif plant_state == SEED_IN_INVENTORY:
 			plant_state = SEED_IN_POT_FUTURE
+			dialog_controller.show_dialog("plant-future")
 		elif plant_state == SEED_IN_POT_PRESENT:
-			print("This is a pretty flower :)")
+			dialog_controller.show_dialog("flower")
 		elif plant_state == SEED_ON_TABLE_FUTURE:
 			print("wow, an empty pot")
 	else:
 		if plant_state == SEED_IN_POT_FUTURE:
 			print("you can't do nothing, boii")
 		elif plant_state == SEED_IN_INVENTORY:
+			dialog_controller.show_dialog("plant-present")
 			plant_state = SEED_IN_POT_PRESENT
 		elif plant_state == SEED_IN_POT_PRESENT:
+			dialog_controller.show_dialog("take-seed-present")
 			plant_state = SEED_IN_INVENTORY
 		elif plant_state == SEED_ON_TABLE_FUTURE:
 			print("wow, an empty pot")
