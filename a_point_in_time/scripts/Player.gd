@@ -5,11 +5,17 @@ var pos = Vector2i.new(0, 0)
 var movestate = null # null or MoveState
 var is_dialog_open = false
 
+var dialog_controller
+var animation_controller
+const speed = 5
+
 func _ready():
 	$AnimatedSprite.play("bot_stand");
+	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
+	dialog_controller.show_dialog("enter-basement")
+	animation_controller = get_node("/root/Node2D/AnimationController")
 
 func _process(delta):
-	var speed = 2
 	check_trigger();
 	update_transform();
 	update_walk(speed * delta);
@@ -62,6 +68,9 @@ class MoveState:
 func is_pressed(dir): # bool
 	if is_dialog_open:
 		return false
+
+	if animation_controller.in_animation():
+		return false
 	
 	if dir == LEFT:
 		return Input.is_action_pressed("ui_left")
@@ -111,6 +120,8 @@ func update_transform():
 func check_trigger():
 	var offset = null
 	if Input.is_action_just_pressed("ui_accept") and !is_dialog_open:
+		if animation_controller.in_animation():
+			return
 		var a = $AnimatedSprite.animation;
 		if a.begins_with("left"):
 			offset = Vector2i.new(-1, 0)
@@ -129,10 +140,13 @@ func update_walk(delta):
 	if movestate == null:
 		var dir = get_move_dir()
 		if dir != null:
-			if is_solid_tile_v(vi_plus(pos, to_vec(dir))):
+			var target = vi_plus(pos, to_vec(dir))
+			if is_solid_tile_v(target):
 				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
+				check_clickable(target)
 			else:
 				movestate = MoveState.new(dir, delta)
+				get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = false
 				var v = dir_to_string(dir) + "_move";
 				if $AnimatedSprite.animation != v:
 					$AnimatedSprite.play(v);
@@ -165,3 +179,6 @@ func move_right():
 func move_top():
 	movestate = MoveState.new(TOP, 0)
 	$AnimatedSprite.play("top_move")
+
+func check_clickable(pos):
+	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = get_node("/root/Node2D/TriggerController").is_clickable(pos.x, pos.y)

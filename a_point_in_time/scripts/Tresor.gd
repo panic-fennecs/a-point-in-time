@@ -23,17 +23,12 @@ func trigger():
 	if tresor_note_state == NOTE_IN_INV and !fut:
 		print("OPENED")
 		tresor_note_state = OPENED
-		_remove_note_item()
+		get_node("/root/Node2D/ModuleManager").take_module()
 	_update()
 
 func _add_note_item():
 	note_item = note_item_scene.instance()
 	add_child(note_item)
-
-func _remove_note_item():
-	assert note_item != null
-	note_item.queue_free()
-	note_item = null
 
 func _update():
 	var fut = get_node("/root/Node2D/TimeController").is_future()

@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/wall0.png" type="Texture" id=1]
 [ext_resource path="res://resources/note.png" type="Texture" id=2]
 
-[node name="NoteItem" type="Node2D" index="0"]
+[node name="NoteItem" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 
