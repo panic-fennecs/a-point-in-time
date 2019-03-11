@@ -16,9 +16,11 @@ func trigger():
 		if fut:
 			if door_state == CLOSED:
 				door_state = OPEN_FUTURE
+				AudioPlayer.play_door()
 		else:
 			if door_state != OPEN:
 				door_state = OPEN
+				AudioPlayer.play_door()
 	else:
 		dialog_controller.show_dialog("door-locked")
 	_update()
