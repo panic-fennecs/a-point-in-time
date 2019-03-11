@@ -13,15 +13,8 @@ func other(t):
 		assert(false)
 
 func trigger():
-	if has_module():
-		get_tree().change_scene("res://scenes/EndScene.tscn");
-	else:
-		var c = get_node("/root/Node2D/TimeController")
-		c.change_time(other(c.time_state))
-		if c.is_present():
-			print("welcome to present!")
-		else:
-			print("welcome to future!")
+	var c = get_node("/root/Node2D/TimeController")
+	c.change_time(other(c.time_state), has_module())
 	AudioPlayer.play_time_machine_warp()
 
 func has_module():

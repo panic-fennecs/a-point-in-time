@@ -15,17 +15,35 @@ var steps = [step1, step2, step3]
 var click = preload("res://audio/click.ogg")
 var door = preload("res://audio/door.ogg")
 var time_machine_warp = preload("res://audio/time_machine_warp.ogg")
+
 var background = preload("res://audio/a_point_in_time.ogg")
+var end_music = preload("res://audio/song_2.ogg")
+
+const FADE_OUT_LEVEL = 30
+var fade_out_level = 0
+var fade_out = false
 
 var players = []
+var background_player = AudioStreamPlayer.new()
+var end_music_player = AudioStreamPlayer.new()
 
 func _ready():
-	var music_player = AudioStreamPlayer.new()
 	background.set_loop(true)
-	music_player.stream = background
+	background_player.stream = background
 	# music_player.volume_db = -12
-	add_child(music_player)
-	music_player.play()
+	add_child(background_player)
+	background_player.play()
+
+func _process(delta):
+	if fade_out:
+		fade_out_level -= (delta * 10)
+		background_player.volume_db = fade_out_level
+		end_music_player.volume_db = -fade_out_level -FADE_OUT_LEVEL - 7
+
+		if fade_out_level < -FADE_OUT_LEVEL:
+			background_player.stop()
+			background_player.queue_free()
+			fade_out = false
 
 func _physics_process(delta):
 	for p in players:
@@ -73,3 +91,12 @@ func play_step():
 	var index = randi() % steps.size()
 	var db = -(randi() % 4)
 	playStreamWithDB(steps[index], db-4)
+
+func play_end_music():
+	fade_out = true
+	
+	end_music.set_loop(true)
+	end_music_player.stream = end_music
+	end_music_player.volume_db = -FADE_OUT_LEVEL
+	add_child(end_music_player)
+	end_music_player.play()
