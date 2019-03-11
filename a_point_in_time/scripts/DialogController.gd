@@ -64,9 +64,9 @@ func _input(event):
         if event.pressed and Input.is_action_just_pressed("ui_accept"):
             next_phrase()
 
-func show_dialog(key):
+func show_dialog(key, is_intro = false):
 	if frame_count == null:
-		frame_count = $DialogSprite.frames.get_frame_count("default")
+		frame_count = $DialogSprite.frames.get_frame_count($DialogSprite.animation)
 	assert(!dialog_visible)
 	if STRING_DICT.keys().has(key):
 		phrases = STRING_DICT[key]
@@ -81,7 +81,11 @@ func show_dialog(key):
 	update_dialog_visibilty()
 	$DialogSprite.frame = randi() % frame_count
 	$DialogLabel.text = phrases[current_phrase]
-	AudioPlayer.play_mumble(-1)
+	if !is_intro:
+		AudioPlayer.play_mumble(-1)
+		$DialogSprite.animation = "default"
+	else:
+		$DialogSprite.animation = "intro"
 	
 func update_dialog_visibilty():
 	$DialogLabel.visible = dialog_visible
