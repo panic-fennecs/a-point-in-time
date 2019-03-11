@@ -14,7 +14,7 @@ var steps = [step1, step2, step3]
 
 var click = preload("res://audio/click.ogg")
 var time_machine_warp = preload("res://audio/time_machine_warp.ogg")
-var background = preload("res://audio/song_2.ogg")
+var background = preload("res://audio/a_point_in_time.ogg")
 
 var players = []
 
@@ -42,6 +42,16 @@ func playStream(pathToFile):
 
 	players.append(player)
 
+func playStreamWithDB(file, db):
+	var player = AudioStreamPlayer.new()
+	file.set_loop(false)
+	player.stream = file
+	player.volume_db = db
+	add_child(player)
+	player.play()
+
+	players.append(player)
+
 func play_mumble(index):
 	if index == -1:
 		index = randi() % mumbles.size()
@@ -53,8 +63,9 @@ func play_time_machine_warp():
 	playStream(time_machine_warp)
 
 func play_click():
-	playStream(click)
+	playStreamWithDB(click, -12)
 
 func play_step():
 	var index = randi() % steps.size()
-	playStream(steps[index])
+	var db = -(randi() % 4)
+	playStreamWithDB(steps[index], db-4)

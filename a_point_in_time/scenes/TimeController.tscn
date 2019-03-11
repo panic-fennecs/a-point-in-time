@@ -1,26 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/TimeController.gd" type="Script" id=1]
-[ext_resource path="res://resources/wall0.png" type="Texture" id=2]
-[ext_resource path="res://resources/white_frame.png" type="Texture" id=3]
-[ext_resource path="res://resources/Pokemon GB.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/ground_sprites/wall31.png" type="Texture" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="DynamicFont" id=2]
-
-size = 12
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 4 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="TimeController" type="Node2D"]
 
@@ -35,43 +25,34 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Sprite" type="Sprite" parent="CanvasLayer" index="0"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer" index="0"]
 
-position = Vector2( 100.78, 46.0599 )
-scale = Vector2( 2.58574, 1.05905 )
-texture = ExtResource( 2 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer" index="1"]
-
-position = Vector2( 101, 46 )
-scale = Vector2( 0.276667, 0.68922 )
+position = Vector2( 56, 22 )
+scale = Vector2( 1.76672, 0.68922 )
 frames = SubResource( 1 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
-[node name="Label" type="Label" parent="CanvasLayer" index="2"]
+[node name="Label" type="Label" parent="CanvasLayer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 21.0
-margin_top = 14.0
-margin_right = 181.0
-margin_bottom = 79.0
+margin_left = 20.0
+margin_top = 16.0
+margin_right = 92.0
+margin_bottom = 30.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
 text = "PRESENT"
 align = 1
-valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "Theme", "custom_constants", "custom_fonts", "custom_styles" ]
 
 
