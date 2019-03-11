@@ -17,7 +17,7 @@ func _input(event):
 			focused_button_id += 1
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://scenes/Main.tscn")
+	get_tree().change_scene("res://scenes/Intro_Scene.tscn")
 
 func _on_CreditsButton_pressed():
 	get_tree().change_scene("res://scenes/CreditScreen.tscn")
