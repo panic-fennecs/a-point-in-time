@@ -14,7 +14,8 @@ func other(t):
 
 func trigger():
 	if has_module():
-		get_tree().change_scene("res://scenes/EndScene.tscn");
+		get_tree().change_scene("res://scenes/EndScene.tscn")
+		AudioPlayer.play_end_music()
 	else:
 		var c = get_node("/root/Node2D/TimeController")
 		c.change_time(other(c.time_state))
