@@ -38,7 +38,7 @@ use_filter = false
 font_data = ExtResource( 14 )
 _sections_unfolded = [ "Extra Spacing", "Font" ]
 
-[node name="CanvasLayer" type="CanvasLayer" index="0"]
+[node name="CanvasLayer" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -57,6 +57,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="DialogLabel" type="Label" parent="." index="1"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
