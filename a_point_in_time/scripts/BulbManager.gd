@@ -28,6 +28,7 @@ func _ready():
 	var lamp_obj = lamp_obj_scene.instance()
 	add_child(lamp_obj)
 	dialog_controller = get_node("/root/Node2D/PlayerCamera/DialogCanvas")
+	dialog_controller.get_node("DialogLabel").margin_left = 140
 	for x in range(4, 9):
 		for y in range(12, 18):
 			if [7, 8].has(x) and [12, 13].has(y):
