@@ -11,7 +11,7 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Resource", "Settings" ]
 
-[node name="ClickableLabel" type="Label" index="0"]
+[node name="ClickableLabel" type="Label"]
 
 visible = false
 modulate = Color( 0.984314, 0.968627, 0.952941, 1 )
