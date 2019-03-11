@@ -13,6 +13,7 @@ var step3 = preload("res://audio/steps/step3.ogg")
 var steps = [step1, step2, step3]
 
 var click = preload("res://audio/click.ogg")
+var door = preload("res://audio/door.ogg")
 var time_machine_warp = preload("res://audio/time_machine_warp.ogg")
 var background = preload("res://audio/song_2.ogg")
 
@@ -64,6 +65,9 @@ func play_time_machine_warp():
 
 func play_click():
 	playStreamWithDB(click, -12)
+
+func play_door():
+	playStreamWithDB(door, -4)
 
 func play_step():
 	var index = randi() % steps.size()
