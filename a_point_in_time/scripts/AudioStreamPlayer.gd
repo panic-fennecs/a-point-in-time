@@ -15,7 +15,7 @@ var steps = [step1, step2, step3]
 var click = preload("res://audio/click.ogg")
 var door = preload("res://audio/door.ogg")
 var time_machine_warp = preload("res://audio/time_machine_warp.ogg")
-var background = preload("res://audio/song_2.ogg")
+var background = preload("res://audio/a_point_in_time.ogg")
 
 var players = []
 

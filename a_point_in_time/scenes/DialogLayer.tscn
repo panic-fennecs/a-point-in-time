@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/DialogController.gd" type="Script" id=1]
 [ext_resource path="res://resources/dialog_background1.png" type="Texture" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://resources/dialog_background9.png" type="Texture" id=10]
 [ext_resource path="res://resources/dialog_background10.png" type="Texture" id=11]
 [ext_resource path="res://resources/dialog_background11.png" type="Texture" id=12]
-[ext_resource path="res://resources/Pokemon GB.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://scenes/ClickableLabel.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resources/dialog_background_empty.png" type="Texture" id=13]
+[ext_resource path="res://resources/Pokemon GB.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://scenes/ClickableLabel.tscn" type="PackedScene" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -22,6 +23,11 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "intro",
+"speed": 5.0
 } ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -29,7 +35,7 @@ animations = [ {
 size = 20
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 13 )
+font_data = ExtResource( 14 )
 _sections_unfolded = [ "Extra Spacing", "Font" ]
 
 [node name="CanvasLayer" type="CanvasLayer" index="0"]
@@ -75,7 +81,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_colors", "custom_fonts" ]
 
-[node name="ClickableLabel" parent="." index="2" instance=ExtResource( 14 )]
+[node name="ClickableLabel" parent="." index="2" instance=ExtResource( 15 )]
 
 margin_left = 347.0
 margin_top = 654.0
