@@ -12,7 +12,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="TimeController" type="Node2D" index="0"]
+[node name="TimeController" type="Node2D"]
 
 script = ExtResource( 1 )
 time_state = 0

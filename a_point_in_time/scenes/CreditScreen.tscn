@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Node2D.gd" type="Script" id=1]
-[ext_resource path="res://RichTextLabel.gd" type="Script" id=2]
+[ext_resource path="res://resources/Pokemon GB.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RichTextLabel.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 14
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Resource", "Settings" ]
 
 [node name="Node2D" type="Node2D"]
 
@@ -25,6 +34,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = false
 bbcode_text = ""
 visible_characters = -1
@@ -36,13 +46,16 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 2 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "BBCode", "custom_colors", "custom_fonts" ]
 
 [node name="Timer" type="Timer" parent="." index="1"]
 
 process_mode = 1
-wait_time = 15.0
+wait_time = 16.0
 one_shot = false
 autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

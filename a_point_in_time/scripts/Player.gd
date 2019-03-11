@@ -22,6 +22,7 @@ func _process(delta):
 	
 	if !get_node("/root/Node2D/PlayerCamera/DialogCanvas").dialog_visible:
 		is_dialog_open_var = false
+	update_clickable()
 
 func is_closed_door(x, y):
 	return x == 7 and y == 12 and get_node("/root/Node2D/Door").is_closed()
@@ -118,23 +119,27 @@ func update_transform():
 		position.x = (pos.x + level * dirv.x) * 64;
 		position.y = (pos.y + level * dirv.y) * 64;
 
+func target_tile():
+	var a = $AnimatedSprite.animation;
+	var offset
+	if a.begins_with("left"):
+		offset = Vector2i.new(-1, 0)
+	elif a.begins_with("bot"):
+		offset = Vector2i.new(0, 1)
+	elif a.begins_with("right"):
+		offset = Vector2i.new(1, 0)
+	elif a.begins_with("top"):
+		offset = Vector2i.new(0, -1)
+	else:
+		assert(false)
+	return vi_plus(pos, offset)
+
 func check_trigger():
 	var offset = null
 	if Input.is_action_just_pressed("ui_accept") and !is_dialog_open():
 		if animation_sprite.in_animation():
 			return
-		var a = $AnimatedSprite.animation;
-		if a.begins_with("left"):
-			offset = Vector2i.new(-1, 0)
-		elif a.begins_with("bot"):
-			offset = Vector2i.new(0, 1)
-		elif a.begins_with("right"):
-			offset = Vector2i.new(1, 0)
-		elif a.begins_with("top"):
-			offset = Vector2i.new(0, -1)
-		else:
-			assert(false)
-		var p = vi_plus(pos, offset)
+		var p = target_tile()
 		get_node("/root/Node2D/TriggerController").click_position(p)
 
 func update_walk(delta):
@@ -144,10 +149,8 @@ func update_walk(delta):
 			var target = vi_plus(pos, to_vec(dir))
 			if is_solid_tile_v(target):
 				$AnimatedSprite.play(dir_to_string(dir) + "_stand");
-				check_clickable(target)
 			else:
 				movestate = MoveState.new(dir, delta)
-				hide_clickable()
 				var v = dir_to_string(dir) + "_move";
 				if $AnimatedSprite.animation != v:
 					$AnimatedSprite.play(v);
@@ -184,9 +187,7 @@ func move_top():
 	movestate = MoveState.new(TOP, 0)
 	$AnimatedSprite.play("top_move")
 
-func check_clickable(pos):
-	var b = get_node("/root/Node2D/TriggerController").is_clickable(pos.x, pos.y)
-	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = b
-
-func hide_clickable():
-	get_node("/root/Node2D/PlayerCamera/ClickableLabel").visible = false
+func update_clickable():
+	var p = target_tile()
+	var b = get_node("/root/Node2D/TriggerController").is_clickable(p.x, p.y)
+	get_node("/root/Node2D/PlayerCamera/DialogCanvas/ClickableLabel").visible = b
