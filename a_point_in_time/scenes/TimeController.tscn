@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/item_sprites/item_background.png" type="Texture" id=2]
 [ext_resource path="res://resources/Pokemon GB.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -38,7 +38,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 position = Vector2( 56, 22 )
 scale = Vector2( 1.76672, 0.68922 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "default"
 _sections_unfolded = [ "Transform" ]
 
@@ -59,12 +59,13 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.984314, 0.968627, 0.952941, 1 )
 text = "PRESENT"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
 
