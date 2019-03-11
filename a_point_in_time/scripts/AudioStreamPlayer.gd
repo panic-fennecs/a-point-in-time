@@ -8,21 +8,17 @@ var mumble4 = preload("res://audio/mumble5.ogg")
 var mumbles = [mumble0, mumble1, mumble2, mumble3, mumble4]
 var click = preload("res://audio/click.ogg")
 var time_machine_warp = preload("res://audio/time_machine_warp.ogg")
-# TODO: var background = preload("res://audio/path_to_background.ogg")
+var background = preload("res://audio/song_2.ogg")
 
 var players = []
 
 func _ready():
-	"""
-	TODO:
 	var music_player = AudioStreamPlayer.new()
 	background.set_loop(true)
 	music_player.stream = background
-	music_player.volume_db = -12
+	# music_player.volume_db = -12
 	add_child(music_player)
 	music_player.play()
-	"""
-	pass
 
 func _physics_process(delta):
 	for p in players:
