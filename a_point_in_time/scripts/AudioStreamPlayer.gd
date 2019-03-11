@@ -42,6 +42,16 @@ func playStream(pathToFile):
 
 	players.append(player)
 
+func playStreamWithDB(file, db):
+	var player = AudioStreamPlayer.new()
+	file.set_loop(false)
+	player.stream = file
+	player.volume_db = db
+	add_child(player)
+	player.play()
+
+	players.append(player)
+
 func play_mumble(index):
 	if index == -1:
 		index = randi() % mumbles.size()
@@ -57,4 +67,5 @@ func play_click():
 
 func play_step():
 	var index = randi() % steps.size()
-	playStream(steps[index])
+	var db = -(randi() % 4)
+	playStreamWithDB(steps[index], db-4)
