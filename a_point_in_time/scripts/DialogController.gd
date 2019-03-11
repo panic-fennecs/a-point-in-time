@@ -17,7 +17,8 @@ const STRING_DICT = {
 		"This might be our last talk for a long time...", 
 		"I'm so sorry, I didn't have the possibility to give you a proper goodbye... ", 
 		"You might get really upset, thinking about the time you spent with me and grandma, but this old man is leaving you, unwillingly.", 
-		"I will spent my last thoughts with you in my mind. Take care of grandma and our mansion she's getting more confused lately, a little side effect of getting old. I hope she'll be fine.", 
+		"I will spent my last thoughts with you in my mind...",
+		"Take care of grandma and our mansion she's getting more confused lately, a little side effect of getting old. I hope she'll be fine.", 
 		"Remember, with great power comes great responsibility.", 
 		"In love... \n\n... grandpa."],
 	
