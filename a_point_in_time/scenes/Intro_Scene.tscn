@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/Intro_Scene.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Intro_Scene.gd" type="Script" id=1]
 [ext_resource path="res://resources/StartScreenBackground.png" type="Texture" id=2]
+[ext_resource path="res://resources/dialog_background_empty.png" type="Texture" id=3]
 
 [node name="CanvasLayer" type="CanvasLayer" index="0"]
 
@@ -19,6 +20,11 @@ centered = false
 _sections_unfolded = [ "Offset" ]
 
 [node name="DialogBubble" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( 0, -200 )
+_sections_unfolded = [ "Offset" ]
 
 [node name="DialogLabel" type="Label" parent="." index="2"]
 
