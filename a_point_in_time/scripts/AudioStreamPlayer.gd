@@ -63,7 +63,7 @@ func play_time_machine_warp():
 	playStream(time_machine_warp)
 
 func play_click():
-	playStream(click)
+	playStreamWithDB(click, -12)
 
 func play_step():
 	var index = randi() % steps.size()
