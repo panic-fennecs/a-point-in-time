@@ -7,7 +7,9 @@ var is_dialog_open_var = false
 
 var dialog_controller
 var animation_sprite
-const speed = 5
+var step_counter = 0
+const STEP_DIFF = 0.35
+const speed = 2
 
 func _ready():
 	$AnimatedSprite.play("bot_stand");
@@ -23,6 +25,14 @@ func _process(delta):
 	if !get_node("/root/Node2D/PlayerCamera/DialogCanvas").dialog_visible:
 		is_dialog_open_var = false
 	update_clickable()
+	
+	if movestate != null:
+		step_counter += delta
+		if step_counter > STEP_DIFF:
+			step_counter = 0
+			AudioPlayer.play_step()
+	else:
+		step_counter = 0
 
 func is_closed_door(x, y):
 	return x == 7 and y == 12 and get_node("/root/Node2D/Door").is_closed()

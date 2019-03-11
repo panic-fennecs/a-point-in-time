@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/a_point_in_time.ogg-3e2d38ea5ebd5cffe016bca6a475e4f5.oggstr"
+
+[deps]
+
+source_file="res://audio/a_point_in_time.ogg"
+dest_files=[ "res://.import/a_point_in_time.ogg-3e2d38ea5ebd5cffe016bca6a475e4f5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
