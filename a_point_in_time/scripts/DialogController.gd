@@ -13,13 +13,13 @@ signal dialog_finished
 const STRING_DICT = {
 	# intro
 	"intro-sequence": [
-		"Mabel, my dearest granddaughter…", 
-		"This might be our last talk for a long time…", 
-		"I'm so sorry, I didn't have the possibility to give you a proper goodbye… ", 
+		"Mabel, my dearest granddaughter...", 
+		"This might be our last talk for a long time...", 
+		"I'm so sorry, I didn't have the possibility to give you a proper goodbye... ", 
 		"You might get really upset, thinking about the time you spent with me and grandma, but this old man is leaving you, unwillingly.", 
 		"I will spent my last thoughts with you in my mind. Take care of grandma and our mansion she's getting more confused lately, a little side effect of getting old. I hope she'll be fine.", 
 		"Remember, with great power comes great responsibility.", 
-		"In love… \n\n…grandpa."],
+		"In love... \n\n... grandpa."],
 	
 	# chapter 1
 	"enter-basement": ["The old basement of my grandpa. I remember playing here as a child alot. It's kinda sad that I couldn't spend much time with him.", "(sigh)","I still can't manage the thought of having inherited my grandpa's old mansion.", "I think I'm gonna look around a bit."],
@@ -66,8 +66,9 @@ const STRING_DICT = {
 	
 	# end
 	"end-sequence": [
-	"After Mabel traveled between the present and future, she successfully  completed the time machine's mechanism to reach the time in the past. Searching for her grandpa she suddenly stopped when she wanted to leave the basement…",
-	"Grandpa!"],
+	"After Mabel traveled between the present and future, she successfully completed the time machine's mechanism to reach the time in the past.",
+	"Searching for her grandpa she suddenly stopped when she wanted to leave the basement...",
+	"Mabel: 'Grandpa!'"],
 
 	"inserting-bulb": ["Let there be light."],
 }
