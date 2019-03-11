@@ -9,7 +9,7 @@ var dialog_controller
 var animation_sprite
 var step_counter = 0
 const STEP_DIFF = 0.35
-const speed = 5
+const speed = 2
 
 func _ready():
 	$AnimatedSprite.play("bot_stand");
