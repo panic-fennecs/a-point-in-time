@@ -53,7 +53,7 @@ const STRING_DICT = {
 	"shelf-scroll": ["Hm.. in this shelf are just some scrolls. Perhaps there is more information in one of the other once."],
 	"shelf-empty": ["Nah.. there are no fancy books in here."],
 	"shelf-found-secret": ["Uh one of the books looks old and selfmade.", "'To travel back in time you need an 'XS-Exchange module'. The module is stored in a safe place.'", "'Chapter 2: How to create a portal.", "I think this is not relevant."],
-	
+	"inserting-bulb": ["Let there be light."]
 }
 
 func _input(event):

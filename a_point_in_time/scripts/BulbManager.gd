@@ -82,11 +82,13 @@ func _insert_bulb_in_future():
 	_remove_item()
 	_lamp_on()
 	bulb_state = FUTURE_LAMP
+	dialog_controller.show_dialog("inserting-bulb")
 
 func _insert_bulb_in_present():
 	_remove_item()
 	_lamp_on()
 	bulb_state = PRESENT_LAMP
+	dialog_controller.show_dialog("inserting-bulb")
 
 func _touch_missing_bulb_in_future():
 	assert (bulb_state == PRESENT_LAMP)
