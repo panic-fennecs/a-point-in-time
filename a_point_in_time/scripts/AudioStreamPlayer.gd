@@ -49,6 +49,7 @@ func _physics_process(delta):
 	for p in players:
 		if not p.is_playing():
 			players.erase(p)
+			p.stop()
 			p.queue_free()
 			break
 
