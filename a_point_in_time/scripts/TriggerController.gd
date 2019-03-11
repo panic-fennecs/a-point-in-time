@@ -25,11 +25,15 @@ func _conv(w):
 
 # pos: Vector2i
 func click_position(pos):
+	var any = false
 	for t in triggers:
 		var int_x = _conv(t.position.x)
 		var int_y = _conv(t.position.y)
 		if int_x == pos.x and int_y == pos.y:
+			any = true
 			t.trigger()
+	if any:
+		play_click()
 
 func stand_position(pos):
 	for t in floor_triggers:
@@ -51,9 +55,5 @@ func _ready():
 	# Initialization here
 	pass
 
-
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func play_click():
+	get_node("/root/AudioPlayer").play_click()

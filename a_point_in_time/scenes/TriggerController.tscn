@@ -84,4 +84,18 @@ script = ExtResource( 9 )
 _sections_unfolded = [ "Transform" ]
 shelf_id = 2
 
+[node name="ShelfTrigger4" type="Node2D" parent="." index="11"]
+
+position = Vector2( 288, -160 )
+script = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+shelf_id = 3
+
+[node name="ShelfTrigger5" type="Node2D" parent="." index="12"]
+
+position = Vector2( 544, 416 )
+script = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+shelf_id = 4
+
 

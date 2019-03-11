@@ -19,3 +19,8 @@ func trigger():
 		else:
 			dialog_controller.show_dialog("shelf-found-secret")
 			found_secret = true
+	elif shelf_id == 3:
+		dialog_controller.show_dialog("shelf-empty")
+	elif shelf_id == 4:
+		dialog_controller.show_dialog("shelf-empty")
+		

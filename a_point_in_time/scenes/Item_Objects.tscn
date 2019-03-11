@@ -13,7 +13,7 @@ lossy_quality = 0.7
 flags = 7
 size = Vector2( 0, 0 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Table0" type="Sprite" parent="." index="0"]
 
